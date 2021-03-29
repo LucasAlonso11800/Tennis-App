@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
+}
+
+/* NAVBAR */
+
+#atp-logo {
+  background-image: url("./assets/logos/ATP.png");
+  background-position: center;
+  background-size: cover;
+  height: 2em;
+  width: 2em;
+}
+
+#wta-logo {
+    background-image: url("./assets/logos/WTA.svg");
+    background-position: center;
+    background-size: cover;
+    height: 2em;
+    width: 2em;
+}
+
+/* LANDING PAGE */
+
+.landing-page-container {
+  background: #36d1dc; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #5b86e5,
+    #36d1dc
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #5b86e5,
+    #36d1dc
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  background-attachment: fixed;
+}
+#australia {
+  background-size: cover;
+  background-image: url("./assets/miniatures/Australian-open.jpg");
+  height: 250px;
+  box-shadow: 0 0 15px 2px #000000;
+}
+
+#roland-garros {
+  background-size: cover;
+  background-image: url("./assets/miniatures/Roland-garros.jpg");
+  height: 250px;
+  box-shadow: 0 0 15px 2px #000000;
+}
+
+#wimbledon {
+  background-size: cover;
+  background-image: url("./assets/miniatures/Wimbledon.jpg");
+  height: 250px;
+  box-shadow: 0 0 15px 2px #000000;
+}
+
+#us-open {
+  background-size: cover;
+  background-image: url("./assets/miniatures/Us-open.jpg");
+  height: 250px;
+  box-shadow: 0 0 15px 2px #000000;
+}
+
+/* RANKING PAGE */
+
+.ranking-page-container{
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-image: url('./assets/backgrounds/Wimbledon.jpg');
+}
+
+#ranking-page{
+    background-color: rgba(255, 255, 255, 0.4);
+    min-height: 95vh;
+}
+
+#ranking-table{
+    box-shadow: 0 0 5px 0px #000000;
+    padding: 0;
+}
+
+#ranking-filter{
+    box-shadow: 0 0 5px 0px #000000;
+    padding: 0;
+}
+
+.ranking-position:hover{
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+/* RACE LONDON PAGE */
+
+.race-london-page-container{
+    background-attachment: fixed;
+    background-position-x: center;
+    background-position-y: 2em;
+    background-size: cover;
+    background-image: url('./assets/backgrounds/Wozniacky.png');
+}
+
+#race-london-page{
+    background-color: rgba(255, 255, 255, 0.4);
+    min-height: 95vh;
+}
+
+#race-london-table{
+    box-shadow: 0 0 5px 0px #000000;
+    padding: 0;
+}
+
+#race-london-filter{
+    box-shadow: 0 0 5px 0px #000000;
+    padding: 0;
+}
+
+/* SEASON CALENDAR PAGE */
+
+.season-calendar-page-container{
+    background-attachment: fixed;
+    background-position-x: center;
+    background-size: cover;
+    background-image: url('./assets/backgrounds/Us-open.webp');
+}
+
+#season-page{
+    background-color: rgba(255, 255, 255, 0.4);
+    min-height: 95vh;
+}
+
+/* CURRENT TOURNAMENTS PAGE */
+
+.current-tournaments-page-container{
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-image: url('./assets/backgrounds/Sharapova.jpg');
+}
+
+#current-tournaments-page{
+    background-color: rgba(255, 255, 255, 0.4);
+    min-height: 95vh;
+}
