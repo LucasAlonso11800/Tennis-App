@@ -20,15 +20,8 @@ function Navbar() {
                     <li className="nav-item">
                         <Link to="/season" className="nav-link">Season Calendar</Link>
                     </li>
-                </ul>
-            </div>
-            <div className="collapse navbar-collapse">
-                <ul className="navbar-nav ml-auto mr-4">
                     <li className="nav-item">
-                        <Link to="/log-in" className="nav-link">Log in</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link to="/sign-up" className="nav-link">Sign up</Link>
+                        <Link to="/news" className="nav-link">News</Link>
                     </li>
                 </ul>
             </div>
