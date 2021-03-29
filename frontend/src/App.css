@@ -124,6 +124,10 @@
     padding: 0;
 }
 
+.filter-row{
+    height: 1em;
+}
+
 /* SEASON CALENDAR PAGE */
 
 .season-calendar-page-container{
