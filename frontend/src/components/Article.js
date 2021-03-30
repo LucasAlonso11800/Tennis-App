@@ -1,17 +1,34 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
+import { GlobalContext } from '../context/GlobalState';
 
 function Article({ article }) {
+    const [userId, setUserId] = useContext(GlobalContext);
+    const [saved, setSaved] = useState(false)
+
     function saveArticle() {
+        if (saved) {
+            axios.post('http://localhost:5000/news/delete', {
+                url: article.url,
+                userId: userId
+            })
+                .then(res => {
+                    console.log(res.data);
+                    setSaved(!saved);
+                })
+                .catch(err => console.log(err))
+        };
+
         axios.post('http://localhost:5000/news/add', {
             title: article.title,
             urlToImage: article.urlToImage,
             description: article.description,
             url: article.url,
-            // userId: req.body.userId
+            userId: userId
         })
             .then(res => {
-                console.log(res);
+                console.log(res.data);
+                setSaved(!saved);
             })
             .catch(err => console.log(err))
     }
@@ -28,7 +45,12 @@ function Article({ article }) {
                         </div>
                         <div className="d-flex justify-content-around mt-4 w-100">
                             <a href={article.url} className="btn btn-primary">Read More</a>
-                            <button type="button" className="btn btn-primary" onClick={saveArticle}>Save Article</button>
+                            <button
+                                type="button"
+                                className={saved ? 'btn btn-success' : 'btn btn-primary'}
+                                onClick={saveArticle}>
+                                {saved ? 'Article saved' : 'Save Article'}
+                            </button>
                         </div>
                     </div>
                 </div>

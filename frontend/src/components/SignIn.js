@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
+import { GlobalContext } from '../context/GlobalState'
 
 function SignIn() {
+    const [userId, setUserId] = useContext(GlobalContext)
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -12,7 +15,7 @@ function SignIn() {
             password: password
         })
             .then(res => {
-                console.log(res.data);
+                setUserId(res.data);
                 setEmail('');
                 setPassword('');
                 window.location = '/'

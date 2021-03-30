@@ -13,18 +13,22 @@ import NewsPage from './components/NewsPage';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 
+import { GlobalProvider } from './context/GlobalState';
+
 function App() {
     return (
         <Router>
-            <Navbar />
-            <Route path="/" exact component={LandingPage}/>
-            <Route path="/ranking" component={RankingPage}/>
-            <Route path="/race-to-london" component={RaceLondonPage}/>
-            <Route path="/current-tournaments" component={CurrentTournamentsPage}/>
-            <Route path="/season" component={SeasonCalendarPage}/>
-            <Route path="/news" component={NewsPage}/>
-            <Route path="/signin" component={SignIn}/>
-            <Route path="/signup" component={SignUp}/>
+            <GlobalProvider>
+                <Navbar />
+                <Route path="/" exact component={LandingPage} />
+                <Route path="/ranking" component={RankingPage} />
+                <Route path="/race-to-london" component={RaceLondonPage} />
+                <Route path="/current-tournaments" component={CurrentTournamentsPage} />
+                <Route path="/season" component={SeasonCalendarPage} />
+                <Route path="/news" component={NewsPage} />
+                <Route path="/signin" component={SignIn} />
+                <Route path="/signup" component={SignUp} />
+            </GlobalProvider>
         </Router>
     );
 }
