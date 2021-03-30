@@ -1,12 +1,40 @@
 const express = require('express');
 const axios = require('axios');
+const mongoose = require('mongoose')
+const passport = require('passport');
+const expSession = require('express-session');
 const cors = require('cors');
 require('dotenv').config()
+require('./config/passport');
+
+const userRoute = require('./routes/users')
+const newsRoute = require('./routes/news')
 
 const app = express()
 
+const MONGO_URI = process.env.MONGO_URI
+
+mongoose.connect(MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}, () => {console.log('Connected to Mongo')})
+
 app.use(express.json())
 app.use(cors())
+
+app.use('/users', userRoute)
+app.use('/news', newsRoute)
+
+app.use(expSession({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false,
+}));
+
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 const NEWS_API_KEY = process.env.NEWS_API_KEY
 const RANKING_TENNIS_KEY = process.env.RANKING_TENNIS_KEY
