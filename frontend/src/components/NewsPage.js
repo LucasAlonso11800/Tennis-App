@@ -12,7 +12,6 @@ function NewsPage() {
             query: query
         })
             .then(res => {
-                console.log(res.data.articles)
                 setNews(res.data.articles);
             })
             .catch(err => console.log(err))
@@ -37,7 +36,7 @@ function NewsPage() {
             </div>
             <div className="row d-flex justify-content-around">
                 {news.map(article => {
-                    return <Article article={article}/>
+                    return <Article article={article} key={article.url}/>
                 })}
             </div>
         </div>

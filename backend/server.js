@@ -10,7 +10,7 @@ app.use(cors())
 
 const NEWS_API_KEY = process.env.NEWS_API_KEY
 const RANKING_TENNIS_KEY = process.env.RANKING_TENNIS_KEY
-const SEASON_TENNIS_KEY = process.env_SEASON_TENNIS_KEY
+const SEASON_TENNIS_KEY = process.env.SEASON_TENNIS_KEY
 
 app.post('/news', (req, res) => {
     const query = req.body.query

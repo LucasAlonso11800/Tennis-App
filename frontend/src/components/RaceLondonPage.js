@@ -23,7 +23,7 @@ function RaceLondonPage() {
                             return player.race_ranking >= minRanking && player.race_ranking <= maxRanking
                         })
                         .filter(player => {
-                            if (!country == undefined) return player.country === country
+                            if (!country === undefined) return player.country === country
                             return player
                         }));
             })
@@ -44,7 +44,7 @@ function RaceLondonPage() {
                             return player.race_ranking >= minRanking && player.race_ranking <= maxRanking
                         })
                         .filter(player => {
-                            if (!country == undefined) return player.country === country
+                            if (!country === undefined) return player.country === country
                             return player
                         }));
             })

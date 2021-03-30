@@ -10,6 +10,10 @@
 
 /* NAVBAR */
 
+.nav-item:hover{
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
 #atp-logo {
   background-image: url("./assets/logos/ATP.png");
   background-position: center;
@@ -81,7 +85,7 @@
 }
 
 #ranking-page{
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.3);
     min-height: 95vh;
 }
 
@@ -110,7 +114,7 @@
 }
 
 #race-london-page{
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.3);
     min-height: 95vh;
 }
 
@@ -138,8 +142,13 @@
 }
 
 #season-page{
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.3);
     min-height: 95vh;
+}
+
+.tournament:hover{
+    background-color: rgba(255, 255, 255, 0.6);
+    color: #ffffff
 }
 
 /* CURRENT TOURNAMENTS PAGE */
@@ -152,7 +161,7 @@
 }
 
 #current-tournaments-page{
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.3);
     min-height: 95vh;
 }
 

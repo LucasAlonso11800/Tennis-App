@@ -9,7 +9,7 @@ import React from 'react'
 
 function Tournament({ tournament }) {
     return (
-        <tr>
+        <tr className="tournament">
             <td>{tournament.start_date}</td>
             <td>{tournament.end_date}</td>
             <td colSpan="2">{tournament.name}</td>
