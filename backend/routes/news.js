@@ -26,4 +26,12 @@ router.post('/add', async (req, res) => {
     }
 });
 
+router.post('/delete', async (req, res) => {
+    const url = req.body.url;
+    const userId = req.body.userId;
+
+    await Article.findOneAndDelete({url: url, userId: userId});
+    res.json('Article deleted from DB');
+});
+
 module.exports = router

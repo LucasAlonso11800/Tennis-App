@@ -17,20 +17,23 @@ function Article({ article }) {
                     setSaved(!saved);
                 })
                 .catch(err => console.log(err))
-        };
-
-        axios.post('http://localhost:5000/news/add', {
-            title: article.title,
-            urlToImage: article.urlToImage,
-            description: article.description,
-            url: article.url,
-            userId: userId
-        })
-            .then(res => {
-                console.log(res.data);
-                setSaved(!saved);
+                return
+        }
+        else {
+            axios.post('http://localhost:5000/news/add', {
+                title: article.title,
+                urlToImage: article.urlToImage,
+                description: article.description,
+                url: article.url,
+                userId: userId
             })
-            .catch(err => console.log(err))
+                .then(res => {
+                    console.log(res.data);
+                    setSaved(!saved);
+                })
+                .catch(err => console.log(err))
+                return
+        }
     }
 
     return (
