@@ -29,6 +29,12 @@
     height: 2em;
     width: 2em;
 }
+.dropdown{
+    position: relative;
+}
+.dropdown-menu{
+    position: absolute;
+}
 
 /* LANDING PAGE */
 
