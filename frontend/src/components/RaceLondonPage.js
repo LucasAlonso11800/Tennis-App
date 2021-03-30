@@ -12,16 +12,9 @@ function RaceLondonPage() {
 
     function filterPlayers(e) {
         e.preventDefault()
-        const options = {
-            method: 'GET',
-            url: `https://tennis-live-data.p.rapidapi.com/rankings/race/${tour}`,
-            headers: {
-                'x-rapidapi-key': '8ff4695492msh7824ef7f847cd23p1fa72fjsn19e73c524f9c',
-                'x-rapidapi-host': 'tennis-live-data.p.rapidapi.com'
-            }
-        };
-
-        axios.request(options)
+        axios.post('http://localhost:5000/london-ranking', {
+            tour: tour
+        })
             .then(res => {
                 const data = res.data.results.rankings
                 setRankings(
@@ -40,25 +33,18 @@ function RaceLondonPage() {
     }
 
     useEffect(() => {
-        const options = {
-            method: 'GET',
-            url: `https://tennis-live-data.p.rapidapi.com/rankings/race/${tour}`,
-            headers: {
-                'x-rapidapi-key': '11d1c1bd99msh3d507f96f5ac859p12b5f9jsn6971ded6d164',
-                'x-rapidapi-host': 'tennis-live-data.p.rapidapi.com'
-            }
-        };
-
-        axios.request(options)
+        axios.post('http://localhost:5000/london-ranking', {
+            tour: tour
+        })
             .then(res => {
                 const data = res.data.results.rankings
                 setRankings(
                     data
                         .filter(player => {
-                            return player.race_ranking >= minRanking && player.race_ranking < maxRanking
+                            return player.race_ranking >= minRanking && player.race_ranking <= maxRanking
                         })
                         .filter(player => {
-                            if (country !== undefined) return player.country === country
+                            if (!country == undefined) return player.country === country
                             return player
                         }));
             })

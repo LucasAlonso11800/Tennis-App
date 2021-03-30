@@ -12,44 +12,9 @@ function RankingPage() {
 
     function filterPlayers(e) {
         e.preventDefault()
-        const options = {
-            method: 'GET',
-            url: `https://tennis-live-data.p.rapidapi.com/rankings/${tour}`,
-            headers: {
-                'x-rapidapi-key': '8ff4695492msh7824ef7f847cd23p1fa72fjsn19e73c524f9c',
-                'x-rapidapi-host': 'tennis-live-data.p.rapidapi.com'
-            }
-        };
-
-        axios.request(options)
-            .then(res => {
-                const data = res.data.results.rankings
-                setRankings(
-                    data
-                        .filter(player => {
-                            return player.ranking >= minRanking && player.ranking <= maxRanking
-                        })
-                        .filter(player => {
-                            if (country !== '' || country !== undefined) return player.country === country
-                            return player
-                        }));
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    }
-
-    useEffect(() => {
-        const options = {
-            method: 'GET',
-            url: `https://tennis-live-data.p.rapidapi.com/rankings/${tour}`,
-            headers: {
-                'x-rapidapi-key': '8ff4695492msh7824ef7f847cd23p1fa72fjsn19e73c524f9c',
-                'x-rapidapi-host': 'tennis-live-data.p.rapidapi.com'
-            }
-        };
-
-        axios.request(options)
+        axios.post('http://localhost:5000/ranking', {
+            tour: tour
+        })
             .then(res => {
                 const data = res.data.results.rankings
                 setRankings(
@@ -62,9 +27,26 @@ function RankingPage() {
                             return player
                         }));
             })
-            .catch(err => {
-                console.log(err);
-            });
+            .catch(err => console.log(err))
+    };
+
+    useEffect(() => {
+        axios.post('http://localhost:5000/ranking', {
+            tour: tour
+        })
+            .then(res => {
+                const data = res.data.results.rankings
+                setRankings(
+                    data
+                        .filter(player => {
+                            return player.ranking >= minRanking && player.ranking < maxRanking
+                        })
+                        .filter(player => {
+                            if (country !== undefined) return player.country === country
+                            return player
+                        }));
+            })
+            .catch(err => console.log(err))
     }, []);
 
     return (
