@@ -24,6 +24,16 @@ function Navbar() {
                         <Link to="/news" className="nav-link">News</Link>
                     </li>
                 </ul>
+                <div className="collapse navbar-collapse">
+                    <ul className="navbar-nav ml-auto">
+                        <li className="nav-item">
+                            <Link to="/signin" className="nav-link">Log in</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/signup" className="nav-link">Sign up</Link>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div className="ml-auto" id="wta-logo"></div>
         </nav>

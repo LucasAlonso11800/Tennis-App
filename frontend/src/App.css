@@ -170,7 +170,7 @@
 .news-page-container{
     background-attachment: fixed;
     background-position-x: center;
-    background-position-x: -2em;
+    background-position-y: 5em;
     background-size: cover;
     background-image: url('./assets/backgrounds/Nadal.jpg');
     min-height: 95vh;
@@ -185,4 +185,25 @@
     height: 6em;
     background-size: cover;
     background-position: center;
+}
+
+/* SIGN UP PAGE */
+
+.sign-up-container{
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-image: url('./assets/backgrounds/Ivanovic.jpg');
+    min-height: 95vh;
+}
+
+/* SIGN IN PAGE */
+
+.sign-in-container{
+    background-attachment: fixed;
+    background-position-x: center;
+    background-position-y: 1.5em;
+    background-size: cover;
+    background-image: url('./assets/backgrounds/Delpo.jpg');
+    min-height: 95vh;
 }

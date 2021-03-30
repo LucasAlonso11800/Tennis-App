@@ -4,7 +4,7 @@ const passport = require('passport')
 const User = require('../models/User');
 
 router.post('/in', passport.authenticate('local'), async (req, res) => {
-    const user = await User.find({email: req.body.email})
+    const user = await User.findOne({ email: req.body.email })
     res.json(user._id)
 });
 
@@ -16,9 +16,10 @@ router.post('/add', async (req, res) => {
     })
 
     user.password = await user.encryptPassword(req.body.password)
-    try{
-        user = user.save()
-    } catch(err){
+    try {
+        user = await user.save()
+        res.json('User saved')
+    } catch (err) {
         console.log(err)
     }
 })

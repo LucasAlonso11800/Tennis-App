@@ -2,10 +2,10 @@ const express = require('express');
 const Article = require('../models/Article')
 const router = express.Router();
 
-router.post('/', async (req, res) => {
+router.post('/get-news', async (req, res) => {
     const id = req.body.id
-    const news = await News.find({userId: id})
-    res.json(news)
+    const article = await Article.find({userId: id})
+    res.json(article)
 });
 
 router.post('/add', async (req, res) => {
@@ -18,7 +18,7 @@ router.post('/add', async (req, res) => {
     })
 
     try{
-        article = article.save()
+        article = await article.save()
         res.json('Article saved')
     }
     catch(err){

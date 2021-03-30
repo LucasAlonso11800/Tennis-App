@@ -22,8 +22,6 @@ mongoose.connect(MONGO_URI, {
 app.use(express.json())
 app.use(cors())
 
-app.use('/users', userRoute)
-app.use('/news', newsRoute)
 
 app.use(expSession({
     secret: process.env.SECRET,
@@ -31,10 +29,8 @@ app.use(expSession({
     saveUninitialized: false,
 }));
 
-
 app.use(passport.initialize());
 app.use(passport.session());
-
 
 const NEWS_API_KEY = process.env.NEWS_API_KEY
 const RANKING_TENNIS_KEY = process.env.RANKING_TENNIS_KEY
@@ -125,6 +121,9 @@ app.post('/current-tournament', (req, res) => {
         .catch(err => console.log(err))
 
 });
+
+app.use('/users', userRoute);
+app.use('/news', newsRoute);
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {

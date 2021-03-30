@@ -10,6 +10,8 @@ import RaceLondonPage from './components/RaceLondonPage';
 import CurrentTournamentsPage from './components/CurrentTournamentsPage';
 import SeasonCalendarPage from './components/SeasonCalendarPage';
 import NewsPage from './components/NewsPage';
+import SignIn from './components/SignIn';
+import SignUp from './components/SignUp';
 
 function App() {
     return (
@@ -21,6 +23,8 @@ function App() {
             <Route path="/current-tournaments" component={CurrentTournamentsPage}/>
             <Route path="/season" component={SeasonCalendarPage}/>
             <Route path="/news" component={NewsPage}/>
+            <Route path="/signin" component={SignIn}/>
+            <Route path="/signup" component={SignUp}/>
         </Router>
     );
 }
