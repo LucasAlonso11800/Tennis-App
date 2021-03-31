@@ -4,8 +4,13 @@ const router = express.Router();
 
 router.post('/get-news', async (req, res) => {
     const id = req.body.id
-    const article = await Article.find({userId: id})
-    res.json(article)
+    try {
+        const article = await Article.find({userId: id})
+        res.json(article)
+    }
+    catch(err){
+        console.log(err)
+    }
 });
 
 router.post('/add', async (req, res) => {

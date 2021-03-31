@@ -33,13 +33,13 @@ function Navbar() {
                     </div>
                 </div>
                 <div className="ml-auto mr-4">
-                    <div class="dropdown">
+                    <div className="dropdown">
                         <button className="btn text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Profile
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                             <Link to="/" className="dropdown-item">Your saved Articles</Link>
-                            <div class="dropdown-divider"></div>
+                            <div className="dropdown-divider"></div>
                             <Link to="/signin" className="dropdown-item">Log in</Link>
                             <Link to="/signup" className="dropdown-item">Sign up</Link>
                         </div>

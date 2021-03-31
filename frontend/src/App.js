@@ -14,6 +14,7 @@ import SeasonCalendarPage from './components/SeasonCalendarPage';
 import NewsPage from './components/NewsPage';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
+import UserPage from './components/UserPage';
 
 import { GlobalProvider } from './context/GlobalState';
 
@@ -30,6 +31,7 @@ function App() {
                 <Route path="/news" component={NewsPage} />
                 <Route path="/signin" component={SignIn} />
                 <Route path="/signup" component={SignUp} />
+                <Route path="/user-articles" component={UserPage} />
             </GlobalProvider>
         </Router>
     );

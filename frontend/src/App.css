@@ -213,3 +213,13 @@
     background-image: url('./assets/backgrounds/Delpo.jpg');
     min-height: 95vh;
 }
+
+/* USER ARTICLES PAGE */
+
+.user-page-container{
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-image: url('./assets/backgrounds/Thiem.jpeg');
+    min-height: 95vh;
+}
