@@ -52,64 +52,47 @@ function RankingPage() {
     return (
         <div className="ranking-page-container">
             <div className="row" id="ranking-page">
-                <div className="col-sm-12 col-md-2 text-center" id="ranking-filter">
-                    <table className="table text-center">
-                        <thead className="thead-dark">
-                            <th>Filter players</th>
-                        </thead>
-                        <tbody>
-                            <tr className="filter-row"></tr>
-                            <tr className="h5">Filter by Ranking</tr>
-                            <tr className="filter-row"></tr>
-                            <tr>Min Ranking:
-                                <input
-                                    className="ml-2"
-                                    type="number"
-                                    min="1"
-                                    max="249"
-                                    value={minRanking}
-                                    onChange={e => setMinRanking(e.target.value)}
-                                />
-                            </tr>
-                            <tr className="filter-row"></tr>
-                            <tr>
-                                Max Ranking:
-                                <input
-                                    className="ml-2"
-                                    type="number"
-                                    min="2"
-                                    max="250"
-                                    value={maxRanking}
-                                    onChange={e => setMaxRanking(e.target.value)}
-                                />
-                            </tr>
-                            <tr className="filter-row"></tr>
-                            <tr>
-                                Country:
-                                <input
-                                    className="ml-2"
-                                    type="text"
-                                    value={country}
-                                    onChange={e => setCountry(e.target.value)}
-                                />
-                            </tr>
-                            <tr className="filter-row"></tr>
-                            <tr>
-                                Tour:
-                                <select
-                                    value={tour}
-                                    onChange={e => setTour(e.target.value)}
-                                >
-                                    <option value="ATP">ATP</option>
-                                    <option value="WTA">WTA</option>
-                                </select>
-                            </tr>
-                            <tr className="filter-row"></tr>
-                            <tr>
-                                <button className="btn btn-primary mb-2" type="button" onClick={filterPlayers}>Filter players</button>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div className="col-sm-12 col-md-2 text-center bg-dark text-light" id="ranking-filter">
+                    <div>
+                        <h5 className="py-4">Filter players</h5>
+                    </div>
+                    <div>
+                        <h6 className="h5 m-0">Filter by Ranking</h6>
+                        <p className="mt-2 mb-0">Min ranking</p>
+                        <input
+                            className="mb-2"
+                            type="number"
+                            min="1"
+                            max="249"
+                            value={minRanking}
+                            onChange={e => setMinRanking(e.target.value)}
+                        />
+                        <p className="mt-2 mb-0">Max Ranking</p>
+                        <input
+                            className="mb-2"
+                            type="number"
+                            min="2"
+                            max="250"
+                            value={maxRanking}
+                            onChange={e => setMaxRanking(e.target.value)}
+                        />
+                        <p className="mt-2 mb-0">Country</p>
+                        <input
+                            className="mb-2"
+                            type="text"
+                            value={country}
+                            onChange={e => setCountry(e.target.value)}
+                        />
+                        <p className="mt-2 mb-0">Tour</p>
+                        <select
+                            value={tour}
+                            onChange={e => setTour(e.target.value)}
+                        >
+                            <option value="ATP">ATP</option>
+                            <option value="WTA">WTA</option>
+                        </select>
+                        <button className="btn btn-primary my-2 w-100" type="button" onClick={filterPlayers}>Filter players</button>
+                    </div>
                 </div>
                 <div className="col-sm-12 col-md-10" id="ranking-table">
                     <table className="table text-center">

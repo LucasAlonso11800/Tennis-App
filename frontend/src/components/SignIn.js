@@ -15,10 +15,11 @@ function SignIn() {
             password: password
         })
             .then(res => {
+                console.log(res.data)
                 setUserId(res.data);
                 setEmail('');
                 setPassword('');
-                window.location = '/'
+                // window.location = '/'
             })
             .catch(err => console.log(err))
     };
@@ -54,7 +55,7 @@ function SignIn() {
                                         placeholder='Enter your Password'
                                     ></input>
                                 </div>
-                                <button type="submit" className="btn btn-primary w-100">Create account</button>
+                                <button type="submit" className="btn btn-primary w-100">Enter</button>
                             </form>
                         </div>
                     </div>

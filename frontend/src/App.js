@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'jquery/dist/jquery.min.js';
-import 'bootstrap/dist/js/bootstrap.min.js';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'jquery/dist/jquery.js';
+import 'bootstrap/dist/js/bootstrap.js';
 import './App.css';
 
 import Navbar from './components/Navbar'

@@ -36,7 +36,7 @@ function NewsPage() {
             </div>
             <div className="row d-flex justify-content-around">
                 {news.map(article => {
-                    return <Article article={article} key={article.url}/>
+                    return <Article article={article} key={article.url} itsSaved={false}/>
                 })}
             </div>
         </div>

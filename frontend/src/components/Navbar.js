@@ -7,7 +7,7 @@ function Navbar() {
             <div id="atp-logo" className="mr-4"></div>
             <Link to="/" className="navbar-brand">Tennis world</Link>
             <div className="collapse navbar-collapse">
-                <div className="d-flex mr-auto">
+                <div className="d-flex justify-content-around">
                     <div className="dropdown">
                         <button className="btn text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Rankings
@@ -38,7 +38,7 @@ function Navbar() {
                             Profile
                         </button>
                         <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <Link to="/" className="dropdown-item">Your saved Articles</Link>
+                            <Link to="/user-articles" className="dropdown-item">Your saved Articles</Link>
                             <div className="dropdown-divider"></div>
                             <Link to="/signin" className="dropdown-item">Log in</Link>
                             <Link to="/signup" className="dropdown-item">Sign up</Link>
