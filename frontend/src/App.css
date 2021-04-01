@@ -11,7 +11,8 @@
 /* NAVBAR */
 
 .nav-item:hover{
-    background-color: rgba(0, 0, 0, 0.4);
+    text-decoration: none;
+    font-weight: bold;
 }
 
 #atp-logo {
