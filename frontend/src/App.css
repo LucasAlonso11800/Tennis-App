@@ -177,6 +177,7 @@
 .article-container{
     background-color: rgba(255, 255, 255, 0.5);
     box-shadow: 0px 0px 10px 1px #000000;
+    position: relative;
 }
 
 .article-img{
@@ -188,6 +189,13 @@
     .article-img{
         height: 12em;
     }
+}
+
+.position-absolute{
+    top: -4em;
+    z-index: 100;
+    background-color: #ffffff;
+    font-size: 0.75rem;
 }
 
 /* SIGN UP PAGE */

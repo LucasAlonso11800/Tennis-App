@@ -27,7 +27,10 @@ router.post('/add', async (req, res) => {
         res.json('Article saved')
     }
     catch(err){
-        console.log(err)
+        res.status(400).send({
+            status: 400,
+            error: 'Bad request'
+        })
     }
 });
 

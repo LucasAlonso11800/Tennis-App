@@ -4,7 +4,8 @@ import { GlobalContext } from '../context/GlobalState';
 
 function Article({ article }) {
     const [userId, setUserId] = useContext(GlobalContext);
-    const [saved, setSaved] = useState(false)
+    const [saved, setSaved] = useState(false);
+    const [loggedIn, setLoggedIn] = useState(true)
 
     function saveArticle() {
         if (saved) {
@@ -17,7 +18,7 @@ function Article({ article }) {
                     setSaved(!saved);
                 })
                 .catch(err => console.log(err))
-                return
+            return
         }
         else {
             axios.post('http://localhost:5000/news/add', {
@@ -31,8 +32,11 @@ function Article({ article }) {
                     console.log(res.data);
                     setSaved(!saved);
                 })
-                .catch(err => console.log(err))
-                return
+                .catch(err => {
+                    if (err) {
+                        setLoggedIn(!loggedIn)
+                    }
+                })
         }
     }
 
@@ -48,12 +52,18 @@ function Article({ article }) {
                         </div>
                         <div className="d-flex justify-content-around mt-4 w-100">
                             <a href={article.url} target="_BLANK" className="btn btn-primary">Read More</a>
-                            <button
-                                type="button"
-                                className={saved ? 'btn btn-success' : 'btn btn-primary'}
-                                onClick={saveArticle}>
-                                {saved ? 'Article saved' : 'Save Article'}
-                            </button>
+                            <div className="position-relative">
+                                <button
+                                    type="button"
+                                    className={!loggedIn ? 'btn btn-warning' :
+                                        saved ? 'btn btn-success w-100' : 'btn btn-primary w-100'}
+                                    onClick={saveArticle}
+                                >
+                                    {!loggedIn ? 'Be sure to log in to save articles' :
+                                        saved ? 'Article saved' : 'Save Article'
+                                    }
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
