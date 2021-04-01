@@ -1,11 +1,11 @@
 const express = require('express');
-const Article = require('../models/Article')
+const Article = require('../models/Article');
 const router = express.Router();
 
 router.post('/get-news', async (req, res) => {
     const id = req.body.id
     try {
-        const article = await Article.find({userId: id})
+        const article = await Article.find({userId: id}).sort({'date': -1})
         res.json(article)
     }
     catch(err){
@@ -20,7 +20,7 @@ router.post('/add', async (req, res) => {
         description: req.body.description,
         url: req.body.url,
         userId: req.body.userId
-    })
+    });
 
     try{
         article = await article.save()

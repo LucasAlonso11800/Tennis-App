@@ -2,9 +2,9 @@ import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { GlobalContext } from '../context/GlobalState';
 
-function Article({ article }) {
+function SavedArticle({ article }) {
     const [userId, setUserId] = useContext(GlobalContext);
-    const [saved, setSaved] = useState(false)
+    const [saved, setSaved] = useState(true)
 
     function saveArticle() {
         if (saved) {
@@ -35,7 +35,7 @@ function Article({ article }) {
                 return
         }
     }
-
+    
     return (
         <div className="mt-4 col-5 article-container">
             <div className="card bg-transparent border-0">
@@ -62,4 +62,4 @@ function Article({ article }) {
     )
 }
 
-export default Article
+export default SavedArticle

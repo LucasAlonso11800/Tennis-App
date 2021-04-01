@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import Article from './Article';
+import SavedArticle from './SavedArticle';
 import { GlobalContext } from '../context/GlobalState';
 
 function UserPage() {
@@ -21,7 +21,7 @@ function UserPage() {
         <div className="user-page-container">
             <div className="row d-flex justify-content-around">
                 {news.map(article => {
-                    return <Article article={article} key={article.url} itsSaved={true}/>
+                    return <SavedArticle article={article} key={article.url}/>
                 })}
             </div>
         </div>
