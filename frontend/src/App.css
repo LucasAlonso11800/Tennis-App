@@ -129,10 +129,6 @@
     padding: 0;
 }
 
-.filter-row{
-    height: 1em;
-}
-
 /* SEASON CALENDAR PAGE */
 
 .season-calendar-page-container{
@@ -159,11 +155,12 @@
     background-position: center;
     background-size: cover;
     background-image: url('./assets/backgrounds/Sharapova.jpg');
+    min-height: 95vh;
 }
 
-#current-tournaments-page{
-    background-color: rgba(255, 255, 255, 0.3);
-    min-height: 95vh;
+.match-container{
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 0px 10px 1px #000000;
 }
 
 /* NEWS PAGE */
@@ -218,3 +215,4 @@
     background-image: url('./assets/backgrounds/Thiem.jpeg');
     min-height: 95vh;
 }
+

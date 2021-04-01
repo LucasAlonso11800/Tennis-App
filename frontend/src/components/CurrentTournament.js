@@ -2,20 +2,34 @@ import React from 'react'
 
 function CurrentTournament({ matches }) {
     return (
-        <div>
+        <>
             {matches.map(match => {
-                return <div className="card">
-                    <h4>{match.title}</h4>
-                    <p>Round: {match.round}</p>
-                    <p>Court: {match.court}</p>
-                    <h5>Result</h5>
-                    <div className="d-flex">
-                        <p>{match.result.home_set1} - {match.result.away_set1}</p>
-                        <p>{match.result.home_set2} - {match.result.away_set2}</p>
+                const result = match.result
+                return <div className="card col-sm-12 col-md-5 m-4 match-container" key={match.id}>
+                    <div className="bg-transparent px-2">
+                        <h4 className="mt-4">{match.title}</h4>
+                        <div className="d-flex">
+                            <p className="mr-4"><b>Round: </b> {match.round_name}</p>
+                            <p className="mr-4"><b>Court: </b> {match.court}</p>
+                        </div>
+                        <h5>Result</h5>
+                        <div className="d-flex mb-2">
+                            {result.home_set3 ?
+                                <>
+                                    <p className="mr-2">{result.home_set1} - {result.away_set1}{!result.home_tb1 ? <></> : result.home_tb1 > result.away_tb1 ? <>({result.away_tb1})</> : <>({result.home_tb1})</>},</p>
+                                    <p className="mr-2">{result.home_set2} - {result.away_set2}{!result.home_tb2 ? <></> : result.home_tb2 > result.away_tb2 ? <>({result.away_tb2})</> : <>({result.home_tb2})</>},</p>
+                                    <p className="mr-2">{result.home_set3} - {result.away_set3}{!result.home_tb3 ? <></> : result.home_tb3 > result.away_tb3 ? <>({result.away_tb3})</> : <>({result.home_tb3})</>}</p>
+                                </>
+                                : <>
+                                    <p className="mr-2">{result.home_set1} - {result.away_set1}{!result.home_tb1 ? <></> : result.home_tb1 > result.away_tb1 ? <>({result.away_tb1})</> : <>({result.home_tb1})</>},</p>
+                                    <p className="mr-2">{result.home_set2} - {result.away_set2}{!result.home_tb2 ? <></> : result.home_tb2 > result.away_tb2 ? <>({result.away_tb2})</> : <>({result.home_tb2})</>}</p>
+                                </>
+                            }
+                        </div>
                     </div>
                 </div>
             })}
-        </div>
+        </>
     )
 }
 
