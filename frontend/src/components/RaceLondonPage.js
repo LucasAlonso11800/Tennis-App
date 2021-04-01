@@ -54,7 +54,7 @@ function RaceLondonPage() {
     }, []);
 
     return (
-        <div className="race-london-page-container">
+        <div className="race-london-page-container container-fluid">
             <div className="row" id="race-london-page">
                 <div className="col-sm-12 col-md-2 text-center bg-dark text-light" id="race-london-filter">
                     <div>

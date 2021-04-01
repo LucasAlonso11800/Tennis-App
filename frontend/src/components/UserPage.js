@@ -18,7 +18,7 @@ function UserPage() {
     }, [])
 
     return (
-        <div className="user-page-container">
+        <div className="user-page-container container-fluid">
             <div className="row d-flex justify-content-around">
                 {news.map(article => {
                     return <SavedArticle article={article} key={article.url}/>

@@ -25,7 +25,7 @@ function SignUp() {
     };
 
     return (
-        <div className="sign-up-container">
+        <div className="sign-up-container container-fluid">
             <div className="row mt-4 ml-2">
                 <div className="col-sm-8 col-md-4">
                     <div className="card">

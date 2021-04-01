@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function Navbar() {
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark container-fluid">
             <div id="atp-logo" className="mr-4"></div>
             <Link to="/" className="navbar-brand mr-auto">Tennis world</Link>
             <div className="ml-4 d-flex">

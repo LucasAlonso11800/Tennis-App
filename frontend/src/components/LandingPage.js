@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function LandingPage() {
     return (
-        <div className="landing-page-container">
+        <div className="landing-page-container container-fluid">
             <div className="row d-flex justify-content-around">
                 <div className="mt-4 mb-3 col-sm-10 col-md-5 col-lg-4 d-flex justify-content-center align-items-center" id="australia">
                     <Link className="text-white text-center h5" to="/ranking">Ranking ATP / WTA</Link>

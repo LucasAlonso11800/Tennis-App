@@ -22,7 +22,7 @@ function CurrentTournamentsPage() {
 
 
     return (
-        <div className="current-tournaments-page-container">
+        <div className="current-tournaments-page-container container-fluid">
             <div className="d-flex bg-dark">
                 <h2 className="text-white text-center w-100">Current Tournaments</h2>
                 <select

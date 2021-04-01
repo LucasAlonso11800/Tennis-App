@@ -17,7 +17,7 @@ function SavedArticle({ article }) {
                     setSaved(!saved);
                 })
                 .catch(err => console.log(err))
-                return
+            return
         }
         else {
             axios.post('http://localhost:5000/news/add', {
@@ -32,12 +32,12 @@ function SavedArticle({ article }) {
                     setSaved(!saved);
                 })
                 .catch(err => console.log(err))
-                return
+            return
         }
     }
-    
+
     return (
-        <div className="mt-4 col-5 article-container">
+        <div className="mt-4 col-sm-12 col-md-5 article-container">
             <div className="card bg-transparent border-0">
                 <div className="card-body">
                     <h4 className="text-center">{article.title}</h4>

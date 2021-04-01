@@ -37,12 +37,12 @@ function Article({ article }) {
     }
 
     return (
-        <div className="mt-4 col-5 article-container">
+        <div className="mt-4 col-sm-12 col-md-5 article-container">
             <div className="card bg-transparent border-0">
                 <div className="card-body">
                     <h4 className="text-center">{article.title}</h4>
                     <div className="row">
-                        <div className="col-sm-12 col-md-4 article-img" style={{ backgroundImage: `url(${article.urlToImage})` }}></div>
+                        <div className="col-sm-12 col-md-4 article-img mb-4" style={{ backgroundImage: `url(${article.urlToImage})` }}></div>
                         <div className="col-sm-12 col-md-8">
                             <p>{article.description}</p>
                         </div>

@@ -18,7 +18,7 @@ function NewsPage() {
     };
 
     return (
-        <div className="news-page-container">
+        <div className="news-page-container container-fluid">
             <div className="d-flex">
                 <Form.Control
                     type="search"

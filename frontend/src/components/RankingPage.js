@@ -50,7 +50,7 @@ function RankingPage() {
     }, []);
 
     return (
-        <div className="ranking-page-container">
+        <div className="ranking-page-container container-fluid">
             <div className="row" id="ranking-page">
                 <div className="col-sm-12 col-md-2 text-center bg-dark text-light" id="ranking-filter">
                     <div>
