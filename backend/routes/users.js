@@ -5,7 +5,10 @@ const User = require('../models/User');
 
 router.post('/in', passport.authenticate('local'), async (req, res) => {
     const user = await User.findOne({ email: req.body.email })
-    res.json(user._id)
+    res.json({
+        userId: user._id,
+        username: user.username
+    })
 });
 
 router.post('/add', async (req, res) => {

@@ -4,6 +4,7 @@ import { GlobalContext } from '../context/GlobalState'
 
 function SignIn() {
     const [userId, setUserId] = useContext(GlobalContext)
+    const [username, setUsername] = useContext(GlobalContext)
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -16,10 +17,13 @@ function SignIn() {
             password: password
         })
             .then(res => {
-                setUserId(res.data);
+                setUserId(res.data.userId);
+                setUsername(res.data.username)
+                console.log(res.data.userId)
+                console.log(res.data.username)
                 setEmail('');
                 setPassword('');
-                window.location = '/';
+                // window.location = '/';
             })
             .catch(err => {
                 if (err) {

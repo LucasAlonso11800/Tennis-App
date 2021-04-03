@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { GlobalContext } from '../context/GlobalState';
 
 function Navbar() {
+    const [username, setUsername] = useContext(GlobalContext);
+
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark container-fluid">
             <div id="atp-logo" className="mr-4"></div>
@@ -21,8 +24,13 @@ function Navbar() {
                 </div>
             </div>
             <div className="mt-2 ml-auto">
-                <Link to="/signin" className="nav-item text-center d-block text-white mb-2">Log in</Link>
-                <Link to="/signup" className="nav-item text-center d-block text-white mb-2">Sign up</Link>
+                {username ?
+                    <p className="nav-item text-center d-block text-white mb-2">Welcome {username}</p> :
+                    <>
+                        <Link to="/signin" className="nav-item text-center d-block text-white mb-2">Log in</Link>
+                        <Link to="/signup" className="nav-item text-center d-block text-white mb-2">Sign up</Link>
+                    </>
+                }
             </div>
             <div className="ml-4" id="wta-logo"></div>
         </nav>
