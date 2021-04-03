@@ -20,9 +20,9 @@ function UserPage() {
     return (
         <div className="user-page-container container-fluid">
             {userId === '' ?
-                <div className="row mt-4 ml-2">
+                <div className="row ml-2">
                     <div className="col-sm-8 col-md-4 ml-auto">
-                        <div className="card">
+                        <div className="card  mt-4">
                             <div className="card-body">
                                 <p>Please log in in order to save your favourite news.<br />
                                 In case you don't have yet an account you can sign up for free.

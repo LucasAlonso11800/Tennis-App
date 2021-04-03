@@ -32,9 +32,9 @@ function SignIn() {
 
     return (
         <div className="sign-in-container container-fluid">
-            <div className="row mt-4 ml-2">
+            <div className="row ml-2">
                 <div className="col-sm-8 col-md-4">
-                    <div className="card">
+                    <div className="card mt-4">
                         <div className="card-body">
                             <h4>Sign in</h4>
                             <p>Enter and visit your favourite articles about Tennis</p>

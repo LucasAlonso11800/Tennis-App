@@ -5,7 +5,7 @@ function CurrentTournament({ matches }) {
         <>
             {matches.map(match => {
                 const result = match.result
-                return <div className="card col-sm-12 col-md-5 m-4 match-container" key={match.id}>
+                return <div className="card col-sm-8 col-md-5 m-4 match-container" key={match.id}>
                     <div className="bg-transparent px-2">
                         <h4 className="mt-4">{match.title}</h4>
                         <div className="d-flex">

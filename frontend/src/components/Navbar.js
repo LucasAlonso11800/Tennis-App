@@ -1,14 +1,24 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import { GlobalContext } from '../context/GlobalState';
 
 function Navbar() {
     const [username, setUsername] = useContext(GlobalContext);
 
+    function logout(){
+
+    };
+
+    function changeText(){
+        const welcomeText = document.getElementById('welcome-text');
+        welcomeText.textContent = 'Click to Logout'
+    };
+
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark container-fluid">
             <div id="atp-logo" className="mr-4"></div>
-            <Link to="/" className="navbar-brand mr-auto">Tennis world</Link>
+            <Link to="/" className="navbar-brand">Tennis world</Link>
             <div className="ml-4 d-flex">
                 <div className="mt-2 mr-4">
                     <Link to="/ranking" className="nav-item text-center d-block text-white mb-2">Ranking ATP / WTA</Link>
@@ -19,16 +29,22 @@ function Navbar() {
                     <Link to="/season" className="nav-item text-center d-block text-white mb-2">Season Calendar</Link>
                 </div>
                 <div className="mt-2 mr-4">
-                    <Link to="/news" className="nav-item text-center d-block text-white mb-2">News</Link>
                     <Link to="/user-articles" className="nav-item text-center d-block text-white mb-2">Your saved Articles</Link>
+                    <Link to="/news" className="nav-item text-center d-block text-white mb-2">News</Link>
                 </div>
             </div>
-            <div className="mt-2 ml-auto">
+            <div className="mt-2 ml-auto" id="user-pages">
                 {username ?
-                    <p className="nav-item text-center d-block text-white mb-2">Welcome {username}</p> :
+                    <p className="nav-item text-center d-block text-white mb-2" 
+                    id="welcome-text"
+                    onClick={logout}
+                    onMouseEnter={changeText}
+                    > 
+                    Welcome {username}
+                    </p> :
                     <>
-                        <Link to="/signin" className="nav-item text-center d-block text-white mb-2">Log in</Link>
-                        <Link to="/signup" className="nav-item text-center d-block text-white mb-2">Sign up</Link>
+                        <Link to="/signin" className="user-item nav-item text-center d-block text-white mb-2">Log in</Link>
+                        <Link to="/signup" className="user-item nav-item text-center d-block text-white mb-2">Sign up</Link>
                     </>
                 }
             </div>

@@ -30,9 +30,9 @@ function SignUp() {
 
     return (
         <div className="sign-up-container container-fluid">
-            <div className="row mt-4 ml-2">
+            <div className="row ml-2">
                 <div className="col-sm-8 col-md-4">
-                    <div className="card">
+                    <div className="card mt-4">
                         <div className="card-body">
                             <h4>Create account</h4>
                             <p>Sign up and save your favourite articles about your favourite players and tournaments</p>
@@ -72,6 +72,7 @@ function SignUp() {
                                         value={password}
                                         onChange={e => setPassword(e.target.value)}
                                         placeholder='Enter your Password'
+                                        minLength='6'
                                     ></input>
                                 </div>
                                 <button type="submit" className="btn btn-primary w-100">Create account</button>
