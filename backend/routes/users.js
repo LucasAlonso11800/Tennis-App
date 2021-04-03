@@ -9,6 +9,10 @@ router.post('/in', passport.authenticate('local'), async (req, res) => {
 });
 
 router.post('/add', async (req, res) => {
+    const email = await User.findOne({ email: req.body.email })
+    if(email){
+        res.sendStatus(400)
+    }
     let user = new User({
         username: req.body.username,
         email: req.body.email,

@@ -5,6 +5,7 @@ function SignUp() {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [authError, setAuthError] = useState()
 
     function saveUser(e) {
         e.preventDefault()
@@ -21,7 +22,11 @@ function SignUp() {
                 setPassword('');
                 window.location = '/signin';
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                if (err) {
+                    setAuthError('Email already registered')
+                }
+            })
     };
 
     return (
@@ -32,6 +37,10 @@ function SignUp() {
                         <div className="card-body">
                             <h4>Create account</h4>
                             <p>Sign up and save your favourite articles about your favourite players and tournaments</p>
+                            {authError ?
+                                <div className="alert alert-warning">{authError}</div>
+                                : <></>
+                            }
                             <form onSubmit={saveUser}>
                                 <div className="form-group">
                                     <label>Username</label>

@@ -7,6 +7,7 @@ function SignIn() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [authError, setAuthError] = useState();
 
     function enter(e) {
         e.preventDefault()
@@ -15,13 +16,16 @@ function SignIn() {
             password: password
         })
             .then(res => {
-                console.log(res.data)
                 setUserId(res.data);
                 setEmail('');
                 setPassword('');
-                // window.location = '/'
+                window.location = '/';
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                if (err) {
+                    setAuthError('Email or password incorrect');
+                }
+            })
     };
 
     return (
@@ -32,6 +36,10 @@ function SignIn() {
                         <div className="card-body">
                             <h4>Sign in</h4>
                             <p>Enter and visit your favourite articles about Tennis</p>
+                            {authError ?
+                                <div className="alert alert-warning">{authError}</div>
+                                : <></>
+                            }
                             <form onSubmit={enter}>
                                 <div className="form-group">
                                     <label>Email</label>
