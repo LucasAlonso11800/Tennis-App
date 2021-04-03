@@ -16,7 +16,6 @@ function SignUp() {
             password: password
         })
             .then(res => {
-                console.log(res.data);
                 setUsername('');
                 setEmail('');
                 setPassword('');

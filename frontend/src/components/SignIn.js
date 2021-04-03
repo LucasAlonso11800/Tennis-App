@@ -19,11 +19,9 @@ function SignIn() {
             .then(res => {
                 setUserId(res.data.userId);
                 setUsername(res.data.username)
-                console.log(res.data.userId)
-                console.log(res.data.username)
                 setEmail('');
                 setPassword('');
-                // window.location = '/';
+                window.location = '/';
             })
             .catch(err => {
                 if (err) {
