@@ -3,8 +3,8 @@ import axios from 'axios';
 import { GlobalContext } from '../context/GlobalState'
 
 function SignIn() {
-    const setUserId = useContext(GlobalContext)
-    const setUsername = useContext(GlobalContext)
+    const [userId, setUserId] = useContext(GlobalContext)
+    const [username, setUsername] = useContext(GlobalContext)
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -17,11 +17,11 @@ function SignIn() {
             password: password
         })
             .then(res => {
+                console.log(res.data)
                 setUserId(res.data.userId);
                 setUsername(res.data.username)
                 setEmail('');
                 setPassword('');
-                // window.location = '/';
             })
             .catch(err => {
                 if (err) {

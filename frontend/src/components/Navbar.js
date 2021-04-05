@@ -5,7 +5,7 @@ import { GlobalContext } from '../context/GlobalState';
 
 function Navbar() {
     const [username, setUsername] = useContext(GlobalContext);
-    const setUserId = useContext(GlobalContext)
+    const [userId, setUserId] = useContext(GlobalContext)
 
     function logout() {
         axios.post('http://localhost:5000/users/out', {

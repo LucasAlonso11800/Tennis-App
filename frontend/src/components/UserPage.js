@@ -4,7 +4,7 @@ import SavedArticle from './SavedArticle';
 import { GlobalContext } from '../context/GlobalState';
 
 function UserPage() {
-    const userId = useContext(GlobalContext);
+    const [userId, setUserdId] = useContext(GlobalContext);
     const [news, setNews] = useState([]);
 
     useEffect(() => {

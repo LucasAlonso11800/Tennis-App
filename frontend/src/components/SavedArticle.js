@@ -3,7 +3,7 @@ import axios from 'axios';
 import { GlobalContext } from '../context/GlobalState';
 
 function SavedArticle({ article }) {
-    const userId = useContext(GlobalContext);
+    const [userId, setUserId] = useContext(GlobalContext);
     const [saved, setSaved] = useState(true)
 
     function saveArticle() {
