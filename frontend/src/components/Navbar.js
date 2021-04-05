@@ -5,14 +5,29 @@ import { GlobalContext } from '../context/GlobalState';
 
 function Navbar() {
     const [username, setUsername] = useContext(GlobalContext);
+    const [userId, setUserId] = useContext(GlobalContext)
 
-    function logout(){
+    function logout() {
+        axios.post('http://localhost:5000/users/out', {
+            out: 'Log me out'
+        })
+            .then(res => {
+                if (res.data === 'Logged out') {
+                    setUsername('')
+                    setUserId('')
+                }
+            })
+            .catch(err => console.log(err));
+    }
 
-    };
-
-    function changeText(){
+    function changeText() {
         const welcomeText = document.getElementById('welcome-text');
         welcomeText.textContent = 'Click to Logout'
+    };
+
+    function backText() {
+        const welcomeText = document.getElementById('welcome-text');
+        welcomeText.textContent = `Welcome ${username}`
     };
 
     return (
@@ -35,12 +50,13 @@ function Navbar() {
             </div>
             <div className="mt-2 ml-auto" id="user-pages">
                 {username ?
-                    <p className="nav-item text-center d-block text-white mb-2" 
-                    id="welcome-text"
-                    onClick={logout}
-                    onMouseEnter={changeText}
-                    > 
-                    Welcome {username}
+                    <p className="nav-item text-center d-block text-white mb-2"
+                        id="welcome-text"
+                        onClick={logout}
+                        onMouseEnter={changeText}
+                        onMouseOut={backText}
+                    >
+                        Welcome {username}
                     </p> :
                     <>
                         <Link to="/signin" className="user-item nav-item text-center d-block text-white mb-2">Log in</Link>

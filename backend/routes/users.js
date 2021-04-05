@@ -29,6 +29,11 @@ router.post('/add', async (req, res) => {
     } catch (err) {
         console.log(err)
     }
-})
+});
+
+router.post('/out', (req, res) => {
+    req.logout();
+    res.json('Logged out')
+});
 
 module.exports = router

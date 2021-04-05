@@ -2,9 +2,11 @@ const express = require('express');
 const axios = require('axios');
 const mongoose = require('mongoose')
 const passport = require('passport');
-const expSession = require('express-session');
+const session = require('express-session');
 const cors = require('cors');
-require('dotenv').config()
+const MongoStore = require('connect-mongo');
+
+require('dotenv').config();
 require('./config/passport');
 
 const userRoute = require('./routes/users')
@@ -20,17 +22,35 @@ mongoose.connect(MONGO_URI, {
 }, () => { console.log('Connected to Mongo') })
 
 app.use(express.json())
-app.use(cors())
+app.use(express.urlencoded({ extended: true }))
+app.use(cors({
+    credentials: true
+}));
 
+const sessionStore = new MongoStore({
+    mongoUrl: MONGO_URI,
+    collectionName: 'sessions',
+    ttl: 24 * 60 * 60
+});
 
-app.use(expSession({
+app.use(session({
     secret: process.env.SECRET,
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
+    store: sessionStore,
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24
+    }
 }));
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use((req, res, next) => {
+    console.log('Session info: ', req.session);
+    console.log('User info: ', req.user)
+    next()
+});
 
 const NEWS_API_KEY = process.env.NEWS_API_KEY
 const RANKING_TENNIS_KEY = process.env.RANKING_TENNIS_KEY

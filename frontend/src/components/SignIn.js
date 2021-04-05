@@ -21,7 +21,7 @@ function SignIn() {
                 setUsername(res.data.username)
                 setEmail('');
                 setPassword('');
-                window.location = '/';
+                // window.location = '/';
             })
             .catch(err => {
                 if (err) {
