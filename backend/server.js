@@ -56,11 +56,12 @@ app.post('/ranking', (req, res) => {
 
     const options = {
         method: 'GET',
-        url: `https://tennis-live-data.p.rapidapi.com/rankings/${tour}`,
-        headers: {
-            'x-rapidapi-key': RANKING_TENNIS_KEY,
-            'x-rapidapi-host': 'tennis-live-data.p.rapidapi.com'
-        }
+        // url: `https://tennis-live-data.p.rapidapi.com/rankings/${tour}`,
+        url: `http://localhost:5000/rdata`
+        // headers: {
+        //     'x-rapidapi-key': RANKING_TENNIS_KEY,
+        //     'x-rapidapi-host': 'tennis-live-data.p.rapidapi.com'
+        // }
     };
     axios.request(options)
         .then(data => {
@@ -69,16 +70,127 @@ app.post('/ranking', (req, res) => {
         .catch(err => console.log(err))
 });
 
+app.get('/rdata', (req, res) => {
+    res.json({
+        'results': {
+            'rankings': [
+                {
+                    "country": "Serbia",
+                    "first_name": "Novak",
+                    "full_name": "Novak Djokovic",
+                    "id": 89304,
+                    "last_name": "Djokovic",
+                    "movement": "",
+                    "ranking": 1,
+                    "ranking_points": 10220
+                },
+                {
+                    "country": "Spain",
+                    "first_name": "Rafael",
+                    "full_name": "Rafael Nadal",
+                    "id": 86928,
+                    "last_name": "Nadal",
+                    "movement": "",
+                    "ranking": 2,
+                    "ranking_points": 9850
+                },
+                {
+                    "country": "Austria",
+                    "first_name": "Dominic",
+                    "full_name": "Dominic Thiem",
+                    "id": 262500,
+                    "last_name": "Thiem",
+                    "movement": "",
+                    "ranking": 3,
+                    "ranking_points": 7045
+                },
+                {
+                    "country": "Switzerland",
+                    "first_name": "Roger",
+                    "full_name": "Roger Federer",
+                    "id": 262501,
+                    "last_name": "Federer",
+                    "movement": "",
+                    "ranking": 4,
+                    "ranking_points": 6630
+                },
+                {
+                    "country": "Russia",
+                    "first_name": "Daniil",
+                    "full_name": "Daniil Medvedev",
+                    "id": 981036,
+                    "last_name": "Medvedev",
+                    "movement": "",
+                    "ranking": 5,
+                    "ranking_points": 5890
+                },
+                {
+                    "country": "Greece",
+                    "first_name": "Stefanos",
+                    "full_name": "Stefanos Tsitsipas",
+                    "id": 734208,
+                    "last_name": "Tsitsipas",
+                    "movement": "",
+                    "ranking": 6,
+                    "ranking_points": 4745
+                },
+                {
+                    "country": "Germany",
+                    "first_name": "Alexander",
+                    "full_name": "Alexander Zverev",
+                    "id": 342990,
+                    "last_name": "Zverev",
+                    "movement": "",
+                    "ranking": 7,
+                    "ranking_points": 3630
+                },
+                {
+                    "country": "Italy",
+                    "first_name": "Matteo",
+                    "full_name": "Matteo Berrettini",
+                    "id": 676710,
+                    "last_name": "Berrettini",
+                    "movement": "",
+                    "ranking": 8,
+                    "ranking_points": 2860
+                },
+                {
+                    "country": "France",
+                    "first_name": "Gael",
+                    "full_name": "Gael Monfils",
+                    "id": 89076,
+                    "last_name": "Monfils",
+                    "movement": "",
+                    "ranking": 9,
+                    "ranking_points": 2860
+                },
+                {
+                    "country": "Belgium",
+                    "first_name": "David",
+                    "full_name": "David Goffin",
+                    "id": 155040,
+                    "last_name": "Goffin",
+                    "movement": "",
+                    "ranking": 10,
+                    "ranking_points": 2555
+
+                }
+            ]
+        }
+    })
+});
+
 app.post('/london-ranking', (req, res) => {
     const tour = req.body.tour;
 
     const options = {
         method: 'GET',
-        url: `https://tennis-live-data.p.rapidapi.com/rankings/race/${tour}`,
-        headers: {
-            'x-rapidapi-key': RANKING_TENNIS_KEY,
-            'x-rapidapi-host': 'tennis-live-data.p.rapidapi.com'
-        }
+        // url: `https://tennis-live-data.p.rapidapi.com/rankings/race/${tour}`,
+        url: 'http://localhost:5000/rdata'
+        // headers: {
+        //     'x-rapidapi-key': RANKING_TENNIS_KEY,
+        //     'x-rapidapi-host': 'tennis-live-data.p.rapidapi.com'
+        // }
     };
     axios.request(options)
         .then(data => {
@@ -268,7 +380,7 @@ app.get('/ctdata', (req, res) => {
             ]
         ]
     })
-})
+});
 
 app.use('/users', userRoute);
 app.use('/news', newsRoute);

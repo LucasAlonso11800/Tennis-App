@@ -7,7 +7,7 @@ function RankingPage() {
 
     const [minRanking, setMinRanking] = useState(1)
     const [maxRanking, setMaxRanking] = useState(50)
-    const [country, setCountry] = useState()
+    const [country, setCountry] = useState('')
     const [tour, setTour] = useState('ATP')
 
     function filterPlayers(e) {
@@ -23,8 +23,8 @@ function RankingPage() {
                             return player.ranking >= minRanking && player.ranking < maxRanking
                         })
                         .filter(player => {
-                            if (country !== undefined) return player.country === country
-                            return player
+                            if (country === '') return player
+                            return player.country === country
                         }));
             })
             .catch(err => console.log(err))
@@ -41,10 +41,7 @@ function RankingPage() {
                         .filter(player => {
                             return player.ranking >= minRanking && player.ranking < maxRanking
                         })
-                        .filter(player => {
-                            if (country !== undefined) return player.country === country
-                            return player
-                        }));
+                )
             })
             .catch(err => console.log(err))
     }, []);
@@ -78,7 +75,7 @@ function RankingPage() {
                         />
                         <p className="mt-2 mb-0">Country</p>
                         <input
-                            className="mb-2"
+                            className="mb-2 overflow-hidden"
                             type="text"
                             value={country}
                             onChange={e => setCountry(e.target.value)}

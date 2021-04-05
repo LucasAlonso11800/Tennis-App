@@ -7,7 +7,7 @@ function RaceLondonPage() {
 
     const [minRanking, setMinRanking] = useState(1)
     const [maxRanking, setMaxRanking] = useState(50)
-    const [country, setCountry] = useState()
+    const [country, setCountry] = useState('')
     const [tour, setTour] = useState('ATP')
 
     function filterPlayers(e) {
@@ -23,8 +23,8 @@ function RaceLondonPage() {
                             return player.race_ranking >= minRanking && player.race_ranking <= maxRanking
                         })
                         .filter(player => {
-                            if (!country === undefined) return player.country === country
-                            return player
+                            if (country === '') return player
+                            return player.country === country
                         }));
             })
             .catch(err => {
@@ -43,10 +43,7 @@ function RaceLondonPage() {
                         .filter(player => {
                             return player.race_ranking >= minRanking && player.race_ranking <= maxRanking
                         })
-                        .filter(player => {
-                            if (!country === undefined) return player.country === country
-                            return player
-                        }));
+                );
             })
             .catch(err => {
                 console.log(err);

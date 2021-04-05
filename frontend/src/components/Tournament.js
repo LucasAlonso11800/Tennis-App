@@ -1,12 +1,5 @@
 import React from 'react'
 
-// <th>Start date</th>
-//                                 <th>End date</th>
-//                                 <th>Tournament</th>
-//                                 <th>Surface</th>
-//                                 <th>City</th>
-//                                 <th>Country</th>
-
 function Tournament({ tournament }) {
     return (
         <tr className="tournament">

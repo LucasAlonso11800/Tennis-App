@@ -23,7 +23,7 @@ function CurrentTournamentsPage() {
 
     return (
         <div className="current-tournaments-page-container container-fluid p-0">
-            <div className="d-flex bg-dark">
+            <div className="d-flex bg-dark current-tournaments-title">
                 <h2 className="text-white text-center w-100">Current Tournaments</h2>
                 <select
                     className="ml-auto"

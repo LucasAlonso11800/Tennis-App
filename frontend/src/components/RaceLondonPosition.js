@@ -15,7 +15,7 @@ function RaceLondonPosition({ ranking }) {
     return (
         <tr className="ranking-position">
             <td>{ranking.country}</td>
-            <td>{ranking.full_name}</td>
+            <td className="player-name">{ranking.full_name}</td>
             <td>{ranking.race_points}</td>
             <td>{movement}</td>
             <td>{ranking.race_ranking}</td>

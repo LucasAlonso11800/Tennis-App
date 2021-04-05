@@ -13,6 +13,9 @@
 
 /* NAVBAR */
 
+.navbar{
+    box-shadow: 0 0 5px 0px #000000;
+}
 .navbar-brand{
     margin-right: auto;
 }
@@ -114,7 +117,6 @@
 }
 
 #ranking-page{
-    background-color: rgba(255, 255, 255, 0.3);
     min-height: 95vh;
 }
 
@@ -127,9 +129,14 @@
     box-shadow: 0 0 5px 0px #000000;
     padding: 0;
 }
-
+.ranking-position{
+    background-color: rgba(255, 255, 255, 0.4);
+}
 .ranking-position:hover{
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.7);
+}
+.player-name{
+    font-weight: bold;
 }
 
 /* RACE LONDON PAGE */
@@ -143,7 +150,6 @@
 }
 
 #race-london-page{
-    background-color: rgba(255, 255, 255, 0.3);
     min-height: 95vh;
 }
 
@@ -167,13 +173,14 @@
 }
 
 #season-page{
-    background-color: rgba(255, 255, 255, 0.3);
     min-height: 95vh;
 }
-
-.tournament:hover{
-    background-color: rgba(255, 255, 255, 0.6);
+.tournament{
+    background-color: rgba(255, 255, 255, 0.4);
     color: #ffffff
+}
+.tournament:hover{
+    background-color: rgba(255, 255, 255, 0.7);
 }
 
 /* CURRENT TOURNAMENTS PAGE */
@@ -185,10 +192,16 @@
     background-image: url('./assets/backgrounds/Sharapova.jpg');
     min-height: 95vh;
 }
-
-.match-container{
-    background-color: rgba(255, 255, 255, 0.5);
+.current-tournaments-title{
     box-shadow: 0px 0px 10px 1px #000000;
+    padding: 0.25em 0;
+}
+.match-container{
+    box-shadow: 0px 0px 10px 1px #000000;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+.match-container:hover{
+    background-color: rgba(255, 255, 255, 0.7);
 }
 
 /* NEWS PAGE */
@@ -203,7 +216,7 @@
 }
 
 .article-container{
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.4);
     box-shadow: 0px 0px 10px 1px #000000;
     position: relative;
 }
