@@ -3,7 +3,7 @@ import axios from 'axios';
 import { GlobalContext } from '../context/GlobalState';
 
 function Article({ article }) {
-    const [userId, setUserId] = useContext(GlobalContext);
+    const userId = useContext(GlobalContext);
     const [saved, setSaved] = useState(false);
     const [loggedIn, setLoggedIn] = useState(true)
 
@@ -50,7 +50,7 @@ function Article({ article }) {
                             <p>{article.description}</p>
                         </div>
                         <div className="d-flex justify-content-around mt-4 w-100">
-                            <a href={article.url} target="_BLANK" className="btn btn-primary">Read More</a>
+                            <a href={article.url} target="_BLANK" rel="noreferrer" className="btn btn-primary">Read More</a>
                             <div className="position-relative">
                                 <button
                                     type="button"

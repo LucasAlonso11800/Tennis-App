@@ -10,7 +10,7 @@ function RaceLondonPosition({ ranking }) {
         } else {
             setMovement(<i class="fas fa-arrow-down"></i>)
         }
-    }, [])
+    }, [ranking.movement])
 
     return (
         <tr className="ranking-position">

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { GlobalContext } from '../context/GlobalState';
 
 function SavedArticle({ article }) {
-    const [userId, setUserId] = useContext(GlobalContext);
+    const userId = useContext(GlobalContext);
     const [saved, setSaved] = useState(true)
 
     function saveArticle() {
@@ -46,7 +46,7 @@ function SavedArticle({ article }) {
                             <p>{article.description}</p>
                         </div>
                         <div className="d-flex justify-content-around mt-4 w-100">
-                            <a href={article.url} target="_BLANK" className="btn btn-primary">Read More</a>
+                            <a href={article.url} target="_BLANK" rel="noreferrer"className="btn btn-primary">Read More</a>
                             <button
                                 type="button"
                                 className={saved ? 'btn btn-success' : 'btn btn-primary'}

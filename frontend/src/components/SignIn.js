@@ -3,8 +3,8 @@ import axios from 'axios';
 import { GlobalContext } from '../context/GlobalState'
 
 function SignIn() {
-    const [userId, setUserId] = useContext(GlobalContext)
-    const [username, setUsername] = useContext(GlobalContext)
+    const setUserId = useContext(GlobalContext)
+    const setUsername = useContext(GlobalContext)
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');

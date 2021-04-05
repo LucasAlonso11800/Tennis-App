@@ -4,7 +4,7 @@ import SavedArticle from './SavedArticle';
 import { GlobalContext } from '../context/GlobalState';
 
 function UserPage() {
-    const [userId, setUserId] = useContext(GlobalContext);
+    const userId = useContext(GlobalContext);
     const [news, setNews] = useState([]);
 
     useEffect(() => {
@@ -15,7 +15,7 @@ function UserPage() {
                 setNews(res.data)
             })
             .catch(err => console.log(err))
-    }, [])
+    }, [userId])
 
     return (
         <div className="user-page-container container-fluid">
