@@ -203,17 +203,91 @@ app.post('/season-calendar', (req, res) => {
     const tour = req.body.tour
     const options = {
         method: 'GET',
-        url: `https://tennis-live-data.p.rapidapi.com/tournaments/${tour}/2021`,
-        headers: {
-            'x-rapidapi-key': SEASON_TENNIS_KEY,
-            'x-rapidapi-host': 'tennis-live-data.p.rapidapi.com'
-        }
+        // url: `https://tennis-live-data.p.rapidapi.com/tournaments/${tour}/2021`,
+        url: `http://localhost:5000/seasondata`
+        // headers: {
+        //     'x-rapidapi-key': SEASON_TENNIS_KEY,
+        //     'x-rapidapi-host': 'tennis-live-data.p.rapidapi.com'
+        // }
     };
     axios.request(options)
         .then(data => {
             res.json(data.data);
         })
         .catch(err => console.log(err))
+});
+
+app.get('/seasondata', (req, res) => {
+    res.json({
+        'results': [
+            {
+                "city": "Doha",
+                "code": "ATP",
+                "country": "Qatar",
+                "end_date": "2020-01-11",
+                "id": 1143,
+                "name": "Qatar ExxonMobil Open",
+                "season": 2020,
+                "start_date": "2020-01-06",
+                "surface": "Outdoor Hard"
+            },
+            {
+                "city": "Adelaide",
+                "code": "ATP",
+                "country": "Australia",
+                "end_date": "2020-01-18",
+                "id": 1144,
+                "name": "Adelaide International",
+                "season": 2020,
+                "start_date": "2020-01-12",
+                "surface": "Outdoor Hard"
+            },
+            {
+                "city": "Auckland",
+                "code": "ATP",
+                "country": "New Zealand",
+                "end_date": "2020-01-18",
+                "id": 1145,
+                "name": "ASB Classic",
+                "season": 2020,
+                "start_date": "2020-01-13",
+                "surface": "Outdoor Hard"
+            },
+            {
+                "city": "Cordoba",
+                "code": "ATP",
+                "country": "Argentina",
+                "end_date": "2020-02-09",
+                "id": 1147,
+                "name": "Cordoba Open",
+                "season": 2020,
+                "start_date": "2020-02-03",
+                "surface": "Outdoor Clay"
+            },
+            {
+                "city": "Montpellier",
+                "code": "ATP",
+                "country": "France",
+                "end_date": "2020-02-09",
+                "id": 1148,
+                "name": "Open Sud de France",
+                "season": 2020,
+                "start_date": "2020-02-03",
+                "surface": "Indoor Hard"
+            },
+            {
+                "city": "Pune",
+                "code": "ATP",
+                "country": "India",
+                "end_date": "2020-02-09",
+                "id": 1149,
+                "name": "Tata Open Maharashtra",
+                "season": 2020,
+                "start_date": "2020-02-03",
+                "surface": "Outdoor Hard"
+            }
+        ]
+    })
 });
 
 app.post('/current-tournament', (req, res) => {

@@ -20,7 +20,7 @@ function RankingPage() {
                 setRankings(
                     data
                         .filter(player => {
-                            return player.ranking >= minRanking && player.ranking < maxRanking
+                            return player.ranking >= minRanking && player.ranking <= maxRanking
                         })
                         .filter(player => {
                             if (country === '') return player
@@ -48,8 +48,8 @@ function RankingPage() {
 
     return (
         <div className="ranking-page-container container-fluid">
-            <div className="row" id="ranking-page">
-                <div className="col-sm-12 col-md-2 text-center bg-dark text-light" id="ranking-filter">
+            <div className="row ranking-page">
+                <div className="col-sm-12 col-md-2 text-center bg-dark text-light ranking-filter px-0">
                     <div>
                         <h5 className="py-4">Filter players</h5>
                     </div>
@@ -75,7 +75,7 @@ function RankingPage() {
                         />
                         <p className="mt-2 mb-0">Country</p>
                         <input
-                            className="mb-2 overflow-hidden"
+                            className="mb-2 country-input"
                             type="text"
                             value={country}
                             onChange={e => setCountry(e.target.value)}
@@ -88,10 +88,10 @@ function RankingPage() {
                             <option value="ATP">ATP</option>
                             <option value="WTA">WTA</option>
                         </select>
-                        <button className="btn btn-primary my-2 w-100" type="button" onClick={filterPlayers}>Filter players</button>
+                        <button className="btn btn-primary my-2 mx-auto d-block" type="button" onClick={filterPlayers}>Filter players</button>
                     </div>
                 </div>
-                <div className="col-sm-12 col-md-10" id="ranking-table">
+                <div className="col-sm-12 col-md-10 ranking-table px-0">
                     <table className="table text-center">
                         <thead className="thead-dark">
                             <tr className="mt-2">

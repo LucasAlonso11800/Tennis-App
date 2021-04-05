@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 
 function RankingPosition({ ranking }) {
-    const [movement, setMovement] = useState()
+    const [movement, setMovement] = useState();
+    
     useEffect(() => {
         if (ranking.movement > 0) {
             setMovement(<i class="fas fa-arrow-up"></i>)
