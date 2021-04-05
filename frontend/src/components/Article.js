@@ -29,7 +29,6 @@ function Article({ article }) {
                 userId: userId
             })
                 .then(res => {
-                    console.log(res.data);
                     setSaved(!saved);
                 })
                 .catch(err => {
@@ -41,7 +40,7 @@ function Article({ article }) {
     }
 
     return (
-        <div className="mt-4 col-sm-12 col-md-5 article-container">
+        <div className="mt-4 col-sm-10 col-md-5 article-container">
             <div className="card bg-transparent border-0">
                 <div className="card-body">
                     <h4 className="text-center">{article.title}</h4>

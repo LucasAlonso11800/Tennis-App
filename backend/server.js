@@ -19,7 +19,7 @@ const MONGO_URI = process.env.MONGO_URI
 mongoose.connect(MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
-}, () => { console.log('Connected to Mongo') })
+}, () => console.log('Connected to Mongo'))
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
