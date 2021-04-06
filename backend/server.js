@@ -10,7 +10,7 @@ require('dotenv').config();
 require('./config/passport');
 
 const userRoute = require('./routes/users')
-const newsRoute = require('./routes/news')
+const newsRoute = require('./routes/news');
 
 const app = express()
 
