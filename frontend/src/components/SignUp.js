@@ -9,7 +9,6 @@ function SignUp() {
 
     function saveUser(e) {
         e.preventDefault()
-        console.log('Doing something')
         axios.post('http://localhost:5000/users/add', {
             username: username,
             email: email,
