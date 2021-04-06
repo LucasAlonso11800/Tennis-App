@@ -20,7 +20,6 @@ function SignIn() {
             password: password
         })
             .then(res => {
-                console.log(res.data)
                 setUserId(res.data.userId);
                 setUsername(res.data.username);
                 setEmail('');
@@ -44,13 +43,10 @@ function SignIn() {
                         <div className="card-body">
                             {authSuccess ?
                                 <>
-                                    <div className="alert alert-success"><h4 className="text-center">{authSuccess}</h4></div>
-                                    <Link to="/ranking" className="btn btn-primary w-100 my-2">Ranking ATP / WTA</Link>
-                                    <Link to="/race-to-london" className="btn btn-primary w-100 my-2">Season rankings</Link>
-                                    <Link to="/current-tournaments" className="btn btn-primary w-100 my-2">Current tournaments</Link>
-                                    <Link to="/season" className="btn btn-primary w-100 my-2">Season calendar</Link>
-                                    <Link to="/user-articles" className="btn btn-primary w-100 my-2">Your articles</Link>
-                                    <Link to="/news" className="btn btn-primary w-100 my-2">News</Link>
+                                    <h4 className="text-center">{authSuccess}</h4>
+                                    <div className="d-flex justify-content-center">
+                                        <Link to="/" className="btn btn-primary my-2">Back to landing page</Link>
+                                    </div>
                                 </>
                                 : <>
                                     <h4>Sign in</h4>

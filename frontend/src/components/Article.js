@@ -3,7 +3,7 @@ import axios from 'axios';
 import { GlobalContext } from '../context/GlobalState';
 
 function Article({ article }) {
-    const userId = useContext(GlobalContext);
+    const [userId, setUserId] = useContext(GlobalContext);
     const [saved, setSaved] = useState(false);
     const [loggedIn, setLoggedIn] = useState(true)
 
