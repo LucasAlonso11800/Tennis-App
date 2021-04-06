@@ -3,6 +3,8 @@ import axios from 'axios';
 import RankingPosition from './RankingPosition';
 
 function RankingPage() {
+    const [isLoading, setIsLoading] = useState(true)
+
     const [rankings, setRankings] = useState([])
 
     const [minRanking, setMinRanking] = useState(1)
@@ -12,10 +14,12 @@ function RankingPage() {
 
     function filterPlayers(e) {
         e.preventDefault()
+        setIsLoading(true)
         axios.post('https://tennis-world-app.herokuapp.com/ranking', {
             tour: tour
         })
             .then(res => {
+                setIsLoading(false)
                 const data = res.data.results.rankings
                 setRankings(
                     data
@@ -35,6 +39,7 @@ function RankingPage() {
             tour: tour
         })
             .then(res => {
+                setIsLoading(false)
                 const data = res.data.results.rankings
                 setRankings(
                     data
@@ -91,28 +96,34 @@ function RankingPage() {
                         <button className="btn btn-primary my-2 mx-auto d-block" type="button" onClick={filterPlayers}>Filter players</button>
                     </div>
                 </div>
-                <div className="col-sm-12 col-md-10 ranking-table px-0">
-                    <table className="table text-center">
-                        <thead className="thead-dark">
-                            <tr className="mt-2">
-                                <th>Country</th>
-                                <th>Player</th>
-                                <th>Points</th>
-                                <th>Movement</th>
-                                <th>Ranking</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {rankings
-                                .map(ranking => {
-                                    return <RankingPosition
-                                        ranking={ranking}
-                                        key={ranking.id}
-                                    />
-                                })}
-                        </tbody>
-                    </table>
-                </div>
+                {isLoading
+                    ? <div className="d-flex justify-content-center mt-4 mx-auto">
+                        <h4 className="text-center text-white mt-4">Loading ranking...</h4>
+                    </div>
+                    :
+                    <div className="col-sm-12 col-md-10 ranking-table px-0">
+                        <table className="table text-center">
+                            <thead className="thead-dark">
+                                <tr className="mt-2">
+                                    <th>Country</th>
+                                    <th>Player</th>
+                                    <th>Points</th>
+                                    <th>Movement</th>
+                                    <th>Ranking</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {rankings
+                                    .map(ranking => {
+                                        return <RankingPosition
+                                            ranking={ranking}
+                                            key={ranking.id}
+                                        />
+                                    })}
+                            </tbody>
+                        </table>
+                    </div>
+                }
             </div>
         </div>
     )

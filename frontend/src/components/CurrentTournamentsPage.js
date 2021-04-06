@@ -3,6 +3,8 @@ import axios from 'axios';
 import CurrentTournament from './CurrentTournament'
 
 function CurrentTournamentsPage() {
+    const [isLoading, setIsLoading] = useState(true)
+
     const [currentTournament, setCurrentTournament] = useState([]);
     const [currentMatches, setCurrentMatches] = useState([]);
     const [tour, setTour] = useState(1)
@@ -12,7 +14,7 @@ function CurrentTournamentsPage() {
             season: '2021'
         })
             .then(res => {
-                console.log(res.data.results[tour].matches)
+                setIsLoading(false)
                 setCurrentMatches(res.data.results[tour].matches);
                 setCurrentTournament(res.data.results[tour].tournament);
             })
@@ -35,14 +37,22 @@ function CurrentTournamentsPage() {
                 </select>
             </div>
             <div>
-                <h3 className="mt-4 ml-4 text-white">{currentTournament.name} - {currentTournament.city}</h3>
-                <div className="d-flex mt-4 ml-4 ">
-                    <p className="mr-4 text-white">Court Surface: {currentTournament.surface}</p>
-                    <p className="mr-4 text-white">From: {currentTournament.start_date} - To: {currentTournament.end_date}</p>
+                {isLoading ? 
+                <div className="d-flex justify-content-center mt-4 mx-auto">
+                    <h4 className="text-center text-white mt-4">Loading matches...</h4>
                 </div>
-                <div className="row d-flex justify-content-around">
-                    <CurrentTournament matches={currentMatches} />
-                </div>
+            :
+                    <>
+                        <h3 className="mt-4 ml-4 text-white">{currentTournament.name} - {currentTournament.city}</h3>
+                        <div className="d-flex mt-4 ml-4 ">
+                            <p className="mr-4 text-white">Court Surface: {currentTournament.surface}</p>
+                            <p className="mr-4 text-white">From: {currentTournament.start_date} - To: {currentTournament.end_date}</p>
+                        </div>
+                        <div className="row d-flex justify-content-around">
+                            <CurrentTournament matches={currentMatches} />
+                        </div>
+                    </>
+                }
             </div>
         </div>
     )

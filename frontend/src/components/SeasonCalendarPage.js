@@ -3,6 +3,8 @@ import axios from 'axios';
 import Tournament from './Tournament';
 
 function SeasonCalendarPage() {
+    const [isLoading, setIsLoading] = useState(true)
+
     const [tournaments, setTournaments] = useState([]);
     const [tour, setTour] = useState('ATP')
 
@@ -11,6 +13,7 @@ function SeasonCalendarPage() {
             tour: tour
         })
             .then(res => {
+                setIsLoading(false)
                 setTournaments(res.data.results);
             })
             .catch(error => {
@@ -21,33 +24,39 @@ function SeasonCalendarPage() {
     return (
         <div className="season-calendar-page-container">
             <div id="season-page">
-                <table className="table text-center">
-                    <thead className="thead-dark">
-                        <tr>
-                            <th>Start date</th>
-                            <th>End date</th>
-                            <th>Tournament</th>
-                            <th>Surface</th>
-                            <th>City</th>
-                            <th>Country</th>
-                            <th>Tour
+                {isLoading
+                    ? <div className="d-flex justify-content-center mt-4 mx-auto">
+                        <h4 className="text-center text-white mt-4">Loading matches...</h4>
+                    </div>
+                    :
+                    <table className="table text-center">
+                        <thead className="thead-dark">
+                            <tr>
+                                <th>Start date</th>
+                                <th>End date</th>
+                                <th>Tournament</th>
+                                <th>Surface</th>
+                                <th>City</th>
+                                <th>Country</th>
+                                <th>Tour
                                 <select className="ml-4" value={tour} onChange={e => setTour(e.target.value)}>
-                                    <option value="ATP">ATP</option>
-                                    <option value="WTA">WTA</option>
-                                </select>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {tournaments
-                            .map(tournament => {
-                                return <Tournament
-                                    tournament={tournament}
-                                    key={tournament.id}
-                                />
-                            })}
-                    </tbody>
-                </table>
+                                        <option value="ATP">ATP</option>
+                                        <option value="WTA">WTA</option>
+                                    </select>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {tournaments
+                                .map(tournament => {
+                                    return <Tournament
+                                        tournament={tournament}
+                                        key={tournament.id}
+                                    />
+                                })}
+                        </tbody>
+                    </table>
+                }
             </div>
         </div>
     )
