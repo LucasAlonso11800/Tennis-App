@@ -132,7 +132,7 @@ app.post('/current-tournament', (req, res) => {
         method: 'GET',
         url: `https://tennis-live-data.p.rapidapi.com/matches-by-date/${date.toISOString().substr(0, 10)}`,
         headers: {
-            'x-rapidapi-key': TENNIS_KEY,
+            'x-rapidapi-key': TENNIS_API_KEY,
             'x-rapidapi-host': 'tennis-live-data.p.rapidapi.com'
         }
     };

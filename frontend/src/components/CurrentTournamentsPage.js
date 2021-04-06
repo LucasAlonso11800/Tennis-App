@@ -5,15 +5,16 @@ import CurrentTournament from './CurrentTournament'
 function CurrentTournamentsPage() {
     const [currentTournament, setCurrentTournament] = useState([]);
     const [currentMatches, setCurrentMatches] = useState([]);
-    const [tour, setTour] = useState(0)
+    const [tour, setTour] = useState(1)
 
     useEffect(() => {
         axios.post('http://localhost:5000/current-tournament', {
             season: '2021'
         })
             .then(res => {
-                setCurrentMatches(res.data.results[tour][0].matches)
-                setCurrentTournament(res.data.results[tour][1].tournament);
+                console.log(res.data.results[tour].matches)
+                setCurrentMatches(res.data.results[tour].matches);
+                setCurrentTournament(res.data.results[tour].tournament);
             })
             .catch(error => {
                 console.log(error);
@@ -29,8 +30,8 @@ function CurrentTournamentsPage() {
                     className="ml-auto"
                     onChange={e => setTour(e.target.value)}
                 >
-                    <option value="0">ATP</option>
-                    <option value="1">WTA</option>
+                    <option value="1">ATP</option>
+                    <option value="0">WTA</option>
                 </select>
             </div>
             <div>

@@ -12,22 +12,27 @@ function CurrentTournament({ matches }) {
                             <p className="mr-4"><b>Round: </b> {match.round_name}</p>
                             <p className="mr-4"><b>Court: </b> {match.court}</p>
                         </div>
-                        <h5>Result</h5>
-                        <div className="d-flex mb-2">
-                            {result.home_set3 ?
-                                <>
-                                    <p className="mr-2">{result.home_set1} - {result.away_set1}{!result.home_tb1 ? <></> : result.home_tb1 > result.away_tb1 ? <>({result.away_tb1})</> : <>({result.home_tb1})</>},</p>
-                                    <p className="mr-2">{result.home_set2} - {result.away_set2}{!result.home_tb2 ? <></> : result.home_tb2 > result.away_tb2 ? <>({result.away_tb2})</> : <>({result.home_tb2})</>},</p>
-                                    <p className="mr-2">{result.home_set3} - {result.away_set3}{!result.home_tb3 ? <></> : result.home_tb3 > result.away_tb3 ? <>({result.away_tb3})</> : <>({result.home_tb3})</>}</p>
-                                </>
-                                : <>
-                                    <p className="mr-2">{result.home_set1} - {result.away_set1}{!result.home_tb1 ? <></> : result.home_tb1 > result.away_tb1 ? <>({result.away_tb1})</> : <>({result.home_tb1})</>},</p>
-                                    <p className="mr-2">{result.home_set2} - {result.away_set2}{!result.home_tb2 ? <></> : result.home_tb2 > result.away_tb2 ? <>({result.away_tb2})</> : <>({result.home_tb2})</>}</p>
-                                </>
-                            }
-                        </div>
+                        {result ? 
+                            <>
+                            <h5>Result</h5>
+                            <div className="d-flex mb-2">
+                                {result.home_set3 ?
+                                    <>
+                                        <p className="mr-2">{result.home_set1} - {result.away_set1}{!result.home_tb1 ? <></> : result.home_tb1 > result.away_tb1 ? <>({result.away_tb1})</> : <>({result.home_tb1})</>},</p>
+                                        <p className="mr-2">{result.home_set2} - {result.away_set2}{!result.home_tb2 ? <></> : result.home_tb2 > result.away_tb2 ? <>({result.away_tb2})</> : <>({result.home_tb2})</>},</p>
+                                        <p className="mr-2">{result.home_set3} - {result.away_set3}{!result.home_tb3 ? <></> : result.home_tb3 > result.away_tb3 ? <>({result.away_tb3})</> : <>({result.home_tb3})</>}</p>
+                                    </>
+                                    : <>
+                                        <p className="mr-2">{result.home_set1} - {result.away_set1}{!result.home_tb1 ? <></> : result.home_tb1 > result.away_tb1 ? <>({result.away_tb1})</> : <>({result.home_tb1})</>},</p>
+                                        <p className="mr-2">{result.home_set2} - {result.away_set2}{!result.home_tb2 ? <></> : result.home_tb2 > result.away_tb2 ? <>({result.away_tb2})</> : <>({result.home_tb2})</>}</p>
+                                    </>
+                                }
+                            </div>
+                        </>
+                            : <h5>Starts at {match.date.substring(11, 16)} GMT</h5>
+                        }
                     </div>
-                </div>
+                    </div>
             })}
         </>
     )
