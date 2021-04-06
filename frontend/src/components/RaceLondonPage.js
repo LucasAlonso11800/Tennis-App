@@ -12,7 +12,7 @@ function RaceLondonPage() {
 
     function filterPlayers(e) {
         e.preventDefault()
-        axios.post('http://localhost:5000/london-ranking', {
+        axios.post('https://tennis-world-app.herokuapp.com/london-ranking', {
             tour: tour
         })
             .then(res => {
@@ -33,7 +33,7 @@ function RaceLondonPage() {
     }
 
     useEffect(() => {
-        axios.post('http://localhost:5000/london-ranking', {
+        axios.post('https://tennis-world-app.herokuapp.com/london-ranking', {
             tour: tour
         })
             .then(res => {

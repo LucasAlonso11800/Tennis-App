@@ -7,7 +7,7 @@ function SeasonCalendarPage() {
     const [tour, setTour] = useState('ATP')
 
     useEffect(() => {
-        axios.post('http://localhost:5000/season-calendar', {
+        axios.post('https://tennis-world-app.herokuapp.com/season-calendar', {
             tour: tour
         })
             .then(res => {

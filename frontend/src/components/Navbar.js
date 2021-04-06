@@ -8,7 +8,7 @@ function Navbar() {
     const [userId, setUserId] = useContext(GlobalContext)
 
     function logout() {
-        axios.post('http://localhost:5000/users/out', {
+        axios.post('https://tennis-world-app.herokuapp.com/users/out', {
             out: 'Log me out'
         })
             .then(res => {

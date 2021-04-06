@@ -12,7 +12,7 @@ function RankingPage() {
 
     function filterPlayers(e) {
         e.preventDefault()
-        axios.post('http://localhost:5000/ranking', {
+        axios.post('https://tennis-world-app.herokuapp.com/ranking', {
             tour: tour
         })
             .then(res => {
@@ -31,7 +31,7 @@ function RankingPage() {
     };
 
     useEffect(() => {
-        axios.post('http://localhost:5000/ranking', {
+        axios.post('https://tennis-world-app.herokuapp.com/ranking', {
             tour: tour
         })
             .then(res => {

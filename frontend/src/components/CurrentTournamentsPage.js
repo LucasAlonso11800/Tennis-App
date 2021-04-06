@@ -8,7 +8,7 @@ function CurrentTournamentsPage() {
     const [tour, setTour] = useState(1)
 
     useEffect(() => {
-        axios.post('http://localhost:5000/current-tournament', {
+        axios.post('https://tennis-world-app.herokuapp.com/current-tournament', {
             season: '2021'
         })
             .then(res => {

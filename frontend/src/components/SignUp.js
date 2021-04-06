@@ -9,7 +9,7 @@ function SignUp() {
 
     function saveUser(e) {
         e.preventDefault()
-        axios.post('http://localhost:5000/users/add', {
+        axios.post('https://tennis-world-app.herokuapp.com/users/add', {
             username: username,
             email: email,
             password: password

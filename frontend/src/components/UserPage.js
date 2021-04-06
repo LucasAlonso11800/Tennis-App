@@ -8,7 +8,7 @@ function UserPage() {
     const [news, setNews] = useState([]);
 
     useEffect(() => {
-        axios.post('http://localhost:5000/news/get-news', {
+        axios.post('https://tennis-world-app.herokuapp.com/news/get-news', {
             id: userId
         })
             .then(res => {

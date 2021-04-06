@@ -9,7 +9,7 @@ function Article({ article }) {
 
     function saveArticle() {
         if (saved) {
-            axios.post('http://localhost:5000/news/delete', {
+            axios.post('https://tennis-world-app.herokuapp.com/news/delete', {
                 url: article.url,
                 userId: userId
             })
@@ -21,7 +21,7 @@ function Article({ article }) {
             return
         }
         else {
-            axios.post('http://localhost:5000/news/add', {
+            axios.post('https://tennis-world-app.herokuapp.com/news/add', {
                 title: article.title,
                 urlToImage: article.urlToImage,
                 description: article.description,

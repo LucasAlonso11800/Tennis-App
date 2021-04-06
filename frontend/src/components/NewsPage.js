@@ -8,7 +8,7 @@ function NewsPage() {
     const [query, setQuery] = useState('')
 
     function searchNews() {
-        axios.post('http://localhost:5000/news', {
+        axios.post('https://tennis-world-app.herokuapp.com/news', {
             query: query
         })
             .then(res => {
