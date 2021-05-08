@@ -1,20 +1,18 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
-import 'jquery/dist/jquery.js';
-import 'bootstrap/dist/js/bootstrap.js';
 import './App.css';
 
 import Navbar from './components/Navbar'
-import LandingPage from './components/LandingPage';
-import RankingPage from './components/RankingPage';
-import RaceLondonPage from './components/RaceLondonPage';
-import CurrentTournamentsPage from './components/CurrentTournamentsPage';
-import SeasonCalendarPage from './components/SeasonCalendarPage';
-import NewsPage from './components/NewsPage';
-import SignIn from './components/SignIn';
-import SignUp from './components/SignUp';
-import UserPage from './components/UserPage';
+import LandingPage from './pages/LandingPage';
+import RankingPage from './pages/RankingPage';
+import RaceLondonPage from './pages/RaceLondonPage';
+import CurrentTournamentsPage from './pages/CurrentTournamentsPage';
+import SeasonCalendarPage from './pages/SeasonCalendarPage';
+import NewsPage from './pages/NewsPage';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
+import UserPage from './pages/UserPage';
 
 import { GlobalProvider } from './context/GlobalState';
 
