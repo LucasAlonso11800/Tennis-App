@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Tournament from './Tournament';
+import Tournament from '../components/Tournament';
 
 function SeasonCalendarPage() {
     const [isLoading, setIsLoading] = useState(true)

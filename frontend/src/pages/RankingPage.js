@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import RaceLondonPosition from './RaceLondonPosition';
+import RankingPosition from '../components/RankingPosition';
 
-function RaceLondonPage() {
+function RankingPage() {
     const [isLoading, setIsLoading] = useState(true)
 
     const [rankings, setRankings] = useState([])
@@ -15,7 +15,7 @@ function RaceLondonPage() {
     function filterPlayers(e) {
         e.preventDefault()
         setIsLoading(true)
-        axios.post('https://tennis-world-app.herokuapp.com/london-ranking', {
+        axios.post('https://tennis-world-app.herokuapp.com/ranking', {
             tour: tour
         })
             .then(res => {
@@ -24,20 +24,18 @@ function RaceLondonPage() {
                 setRankings(
                     data
                         .filter(player => {
-                            return player.race_ranking >= minRanking && player.race_ranking <= maxRanking
+                            return player.ranking >= minRanking && player.ranking <= maxRanking
                         })
                         .filter(player => {
                             if (country === '') return player
                             return player.country === country
                         }));
             })
-            .catch(err => {
-                console.log(err);
-            });
-    }
+            .catch(err => console.log(err))
+    };
 
     useEffect(() => {
-        axios.post('https://tennis-world-app.herokuapp.com/london-ranking', {
+        axios.post('https://tennis-world-app.herokuapp.com/ranking', {
             tour: tour
         })
             .then(res => {
@@ -46,17 +44,15 @@ function RaceLondonPage() {
                 setRankings(
                     data
                         .filter(player => {
-                            return player.race_ranking >= minRanking && player.race_ranking <= maxRanking
+                            return player.ranking >= minRanking && player.ranking < maxRanking
                         })
-                );
+                )
             })
-            .catch(err => {
-                console.log(err);
-            });
+            .catch(err => console.log(err))
     }, []);
 
     return (
-        <div className="race-london-page-container container-fluid">
+        <div className="ranking-page-container container-fluid">
             <div className="row ranking-page">
                 <div className="col-sm-12 col-md-2 text-center bg-dark text-light ranking-filter px-0">
                     <div>
@@ -108,7 +104,7 @@ function RaceLondonPage() {
                     <div className="col-sm-12 col-md-10 ranking-table px-0">
                         <table className="table text-center">
                             <thead className="thead-dark">
-                                <tr>
+                                <tr className="mt-2">
                                     <th>Country</th>
                                     <th>Player</th>
                                     <th>Points</th>
@@ -119,7 +115,7 @@ function RaceLondonPage() {
                             <tbody>
                                 {rankings
                                     .map(ranking => {
-                                        return <RaceLondonPosition
+                                        return <RankingPosition
                                             ranking={ranking}
                                             key={ranking.id}
                                         />
@@ -133,4 +129,4 @@ function RaceLondonPage() {
     )
 }
 
-export default RaceLondonPage
+export default RankingPage

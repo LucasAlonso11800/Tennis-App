@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form } from 'react-bootstrap'
-import Article from './Article'
+import Article from '../components/Article'
 import axios from 'axios';
 
 function NewsPage() {

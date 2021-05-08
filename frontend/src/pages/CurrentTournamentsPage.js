@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import CurrentTournament from './CurrentTournament'
+import CurrentTournament from '../components/CurrentTournament'
 
 function CurrentTournamentsPage() {
     const [isLoading, setIsLoading] = useState(true)

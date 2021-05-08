@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import SavedArticle from './SavedArticle';
+import SavedArticle from '../components/SavedArticle';
 import { GlobalContext } from '../context/GlobalState';
 
 function UserPage() {
