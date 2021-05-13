@@ -1,0 +1,103 @@
+import styled from 'styled-components'
+import { Link } from 'react-router-dom';;
+
+export const Header = styled.header`
+width: 100%;
+background: #101522;
+@media all and (max-width: 960px){
+    padding: 1em 0;
+}
+`
+export const Nav = styled.nav`
+width: 100%;
+display: flex;
+justify-content: space-around;
+align-items: center;
+`
+
+export const NavIcon = styled.img`
+margin: 0 1em;
+height: 2.5em;
+width: 2.5em;
+`
+
+export const NavLogo = styled(Link)`
+font-size: 1.75rem;
+margin: 0 1em;
+color: #fff;
+
+&:hover{
+text-decoration: none;
+color: #fff;
+}
+`
+
+export const MobileIcon = styled.div`
+    display: none;
+    @media screen and (max-width:960px){
+        display: block;
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: #fff;
+    }
+`;
+
+export const NavMenuContainer = styled.div`
+display: flex;
+flex-grow: 1;
+@media all and (max-width: 960px){
+    display: flex;
+    width: 100%;
+    position: absolute;
+    top: 70px;
+    left: ${({ isDisplayed }) => (isDisplayed ? 0 : '-105%')};
+    transition: all 0.5s ease-in-out;
+    background: #101522;
+    z-index: 10;
+}
+@media all and (max-width: 600px){
+    flex-direction: column;
+}
+`;
+
+
+export const NavMenu = styled.ul`
+list-style-type: none;
+width: 25%;
+margin: 0;
+position: relative;
+`
+
+export const NavMenuTitle = styled.li`
+padding: 1em;
+text-align: center;
+color: #fff;
+&:hover{
+    background-color: #000
+};
+`
+export const NavItem = styled.li`
+display: ${({ isDisplayed }) => isDisplayed ? 'flex' : 'none'};
+flex-direction: column;
+position: absolute;
+top: ${({ isDisplayed }) => isDisplayed ? 1 : '-10%'};
+transition: all 0.5s ease-in-out;
+z-index: 10;
+background: #101522;
+width: 100%;
+@media all and (max-width: 600px){
+    top: 0;
+    transform: translateX(${({ isDisplayed }) => isDisplayed ? '100%' : '-100%'});
+}
+`
+
+export const NavLink = styled(Link)`
+text-align: center;
+color: #fff;
+padding: 1em;
+&:hover{
+    background-color: #000;
+    text-decoration: none;
+    color: #fff;
+}
+`

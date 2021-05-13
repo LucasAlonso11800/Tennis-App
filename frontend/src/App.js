@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 
-import Navbar from './components/Navbar'
+import { Navbar } from './components/index'
 import LandingPage from './pages/LandingPage';
 import RankingPage from './pages/RankingPage';
 import RaceLondonPage from './pages/RaceLondonPage';
