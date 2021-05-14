@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { RankingTable } from '../../components/index';
+import { BackgroundContainer } from '../../globalStyles';
+import Background from '../../assets/backgrounds/Wozniacky.png';
 
 function RaceToLondonPage(){
     const [isLoading, setIsLoading] = useState(true);
@@ -51,9 +53,9 @@ function RaceToLondonPage(){
     }, []);
 
     return (
-        <>
+        <BackgroundContainer background={Background}>
             <RankingTable rankings={rankings} />
-        </>
+        </BackgroundContainer>
     )
 };
 

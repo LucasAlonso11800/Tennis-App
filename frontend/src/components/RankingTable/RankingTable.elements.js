@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Table = styled.table`
-width: 100%;
+width: 90%;
 text-align: center;
 `;
 
