@@ -58,13 +58,18 @@ flex-grow: 1;
 @media all and (max-width: 600px){
     flex-direction: column;
 }
+@media all and (max-width: 429px){
+    top: 101px;
+}
 `;
 
 
 export const NavMenu = styled.ul`
 list-style-type: none;
 width: 25%;
-margin: 0;
+@media all and (max-width: 600px){
+    width: 40%
+}
 position: relative;
 `
 
