@@ -22,7 +22,6 @@ function Navbar() {
     const [userId, setUserId] = useContext(GlobalContext);
 
     const [display, setDisplay] = useState({});
-    const [button, setButton] = useState();
     const [displayLateralNavbar, setDisplayLateralNavbar] = useState(false)
 
     function handleClick(item) {
@@ -38,13 +37,6 @@ function Navbar() {
             default: return
         }
     };
-
-    function handleResize(){
-        const isMobile = window.innerWidth <= 960;
-        isMobile ? setButton(true) : setButton(false);
-    };
-
-    window.addEventListener('resize', () => handleResize);
 
     function logout() {
         axios.post('https://tennis-world-app.herokuapp.com/users/out', {
