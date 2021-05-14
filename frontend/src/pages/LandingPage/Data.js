@@ -11,7 +11,7 @@ export const sectionOne = {
     heading: `Updated to ${new Date().toISOString().substring(0, 10)}`,
     title: 'Rankings ATP & WTA',
     text: 'Check the current ATP and WTA rankings, filter players by country and ranking',
-    link: '/rankings',
+    link: '/ranking',
     linkText: 'Rankings',
     img: Australia,
     alt: 'Australian Open'
