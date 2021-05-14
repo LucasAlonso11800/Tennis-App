@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 
 import { Navbar } from './components/index'
-import LandingPage from './pages/LandingPage';
+import LandingPage from './pages/LandingPage/LandingPage';
 import RankingPage from './pages/RankingPage';
 import RaceLondonPage from './pages/RaceLondonPage';
 import CurrentTournamentsPage from './pages/CurrentTournamentsPage';
