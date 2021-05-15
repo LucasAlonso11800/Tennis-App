@@ -12,25 +12,26 @@ function RaceToLondonPage(){
     const [country, setCountry] = useState('');
     const [tour, setTour] = useState('ATP');
 
-    // function filterPlayers(e) {
-    //     axios.post('https://tennis-world-app.herokuapp.com/london-ranking', {
-    //         tour: tour
-    //     })
-    //         .then(res => {
-    //             setIsLoading(false)
-    //             const data = res.data.results.rankings
-    //             setRankings(
-    //                 data
-    //                     .filter(player => {
-    //                         return player.ranking >= minRanking && player.ranking <= maxRanking
-    //                     })
-    //                     .filter(player => {
-    //                         if (country === '') return player
-    //                         return player.country === country
-    //                     }));
-    //         })
-    //         .catch(err => console.log(err))
-    // };
+    function filterPlayers(e) {
+        setIsLoading(true);
+        axios.post('https://tennis-world-app.herokuapp.com/london-ranking', {
+            tour: tour
+        })
+            .then(res => {
+                setIsLoading(false);
+                const data = res.data.results.rankings
+                setRankings(
+                    data
+                        .filter(player => {
+                            return player.ranking >= minRanking && player.ranking <= maxRanking
+                        })
+                        .filter(player => {
+                            if (country === '') return player
+                            return player.country === country
+                        }));
+            })
+            .catch(err => console.log(err))
+    };
 
     useEffect(() => {
         axios.post('https://tennis-world-app.herokuapp.com/ranking', {
