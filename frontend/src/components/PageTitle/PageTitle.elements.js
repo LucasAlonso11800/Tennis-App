@@ -9,10 +9,24 @@ color: ${Colors.darkBlue};
 display: flex;
 justify-content: space-between;
 align-items: center;
+text-align: center;
+`;
+
+export const TitleContainer = styled.div`
+display: flex;
+align-items: center;
+@media all and (max-width: 600px){
+    flex-direction: column;
+    margin-right: 0.5em;
+}
 `;
 
 export const Title = styled.h2`
-margin-right: 1em;
+display: inline;
+`;
+
+export const Subtitle = styled.p`
+margin: 0 0.5em;
 `;
 
 export const SelectContainer = styled.div`

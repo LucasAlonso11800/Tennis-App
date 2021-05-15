@@ -14,5 +14,7 @@ position: relative;
 
 export const Colors = {
     darkBlue: '#101522',
-    beige: '#f5f5dc'
+    beige: '#f5f5dc',
+    beigeTransparent: 'rgba(240, 240, 225, 0.4)',
+    beigeTransparentHover: 'rgba(240, 240, 225, 0.7)'
 };

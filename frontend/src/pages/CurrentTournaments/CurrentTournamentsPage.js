@@ -3,7 +3,7 @@ import axios from 'axios';
 import { BackgroundContainer } from '../../globalStyles';
 import Background from '../../assets/backgrounds/Sharapova.jpg'
 
-import { CurrentTournament, PageTitle } from '../../components/index';
+import { PageTitle, Matches } from '../../components/index';
 
 function CurrentTournamentsPage() {
     const [isLoading, setIsLoading] = useState(true)
@@ -12,24 +12,30 @@ function CurrentTournamentsPage() {
     const [currentMatches, setCurrentMatches] = useState([]);
     const [tour, setTour] = useState(1)
 
-    // useEffect(() => {
-    //     axios.post('https://tennis-world-app.herokuapp.com/current-tournament', {
-    //         season: '2021'
-    //     })
-    //         .then(res => {
-    //             setIsLoading(false)
-    //             setCurrentMatches(res.data.results[tour].matches);
-    //             setCurrentTournament(res.data.results[tour].tournament);
-    //         })
-    //         .catch(error => {
-    //             console.log(error);
-    //         })
-    // }, [tour])
+    useEffect(() => {
+        axios.post('https://tennis-world-app.herokuapp.com/current-tournament', {
+            season: '2021'
+        })
+            .then(res => {
+                setIsLoading(false)
+                setCurrentMatches(res.data.results[tour].matches);
+                setCurrentTournament(res.data.results[tour].tournament);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }, [tour])
 
 
     return (
         <BackgroundContainer background={Background}>
-            <PageTitle title={'Current Tournaments'} setTour={setTour}/>
+            <PageTitle
+                title={currentTournament.name}
+                subtitle={currentTournament.city}
+                valueATP={1}
+                valueWTA={0}
+                setTour={setTour} />
+            <Matches matches={currentMatches}/>
         </BackgroundContainer>
     )
 };
