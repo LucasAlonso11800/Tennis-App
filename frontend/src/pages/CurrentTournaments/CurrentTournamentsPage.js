@@ -3,7 +3,7 @@ import axios from 'axios';
 import { BackgroundContainer } from '../../globalStyles';
 import Background from '../../assets/backgrounds/Sharapova.jpg'
 
-import { CurrentTournament } from '../../components/index';
+import { CurrentTournament, PageTitle } from '../../components/index';
 
 function CurrentTournamentsPage() {
     const [isLoading, setIsLoading] = useState(true)
@@ -29,9 +29,9 @@ function CurrentTournamentsPage() {
 
     return (
         <BackgroundContainer background={Background}>
-
+            <PageTitle title={'Current Tournaments'} setTour={setTour}/>
         </BackgroundContainer>
     )
-}
+};
 
 export default CurrentTournamentsPage;

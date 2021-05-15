@@ -71,7 +71,7 @@ function Navbar() {
                         <NavMenuTitle onClick={() => handleClick('tournaments')}>Tournaments</NavMenuTitle>
                         <NavItem isDisplayed={display.tournaments}>
                             <NavLink to="/current-tournaments">Current Tournaments</NavLink>
-                            <NavLink to="/season-calendar">Season Calendar</NavLink>
+                            <NavLink to="/season">Season Calendar</NavLink>
                         </NavItem>
                     </NavMenu>
                     <NavMenu>
