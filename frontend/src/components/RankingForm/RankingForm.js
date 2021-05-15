@@ -24,8 +24,8 @@ function RankingForm({ minRanking, setMinRanking, maxRanking, setMaxRanking, set
                 {isDisplayed ? <FaTimes onClick={() => setIsDisplayed(false)} />
                     : <FaAngleDoubleLeft onClick={() => setIsDisplayed(true)} />}
             </FormTitleContainer>
-            <Form>
-                <Label htmlFor='min-ranking'>Higher ranking</Label>
+            <Form display={isDisplayed}>
+                <Label htmlFor='min-ranking'>Highest ranking</Label>
                 <RankingInput
                     value={minRanking}
                     onChange={e => setMinRanking(e.target.value)}
@@ -34,7 +34,7 @@ function RankingForm({ minRanking, setMinRanking, maxRanking, setMaxRanking, set
                     min='1'
                     max='249'
                 />
-                <Label htmlFor='max-ranking'>Lower ranking</Label>
+                <Label htmlFor='max-ranking'>Lowest ranking</Label>
                 <RankingInput
                     value={maxRanking}
                     onChange={e => setMaxRanking(e.target.value)}

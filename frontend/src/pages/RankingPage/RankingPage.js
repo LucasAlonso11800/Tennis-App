@@ -33,28 +33,28 @@ function RankingPage() {
             .catch(err => console.log(err))
     };
 
-    // useEffect(() => {
-    //     console.log('here')
-    //     axios.post('https://tennis-world-app.herokuapp.com/ranking', {
-    //         tour: tour
-    //     })
-    //         .then(res => {
-    //             console.log('And here wasting calls')
-    //             setIsLoading(false)
-    //             const data = res.data.results.rankings
-    //             console.log(data)
-    //             setRankings(
-    //                 data
-    //                     .filter(player => {
-    //                         return player.ranking >= minRanking && player.ranking <= maxRanking
-    //                     })
-    //                     .filter(player => {
-    //                         if (country === '') return player
-    //                         return player.country === country
-    //                     }));
-    //         })
-    //         .catch(err => console.log(err));
-    // }, []);
+    useEffect(() => {
+        console.log('here')
+        axios.post('https://tennis-world-app.herokuapp.com/ranking', {
+            tour: tour
+        })
+            .then(res => {
+                console.log('And here wasting calls')
+                setIsLoading(false)
+                const data = res.data.results.rankings
+                console.log(data)
+                setRankings(
+                    data
+                        .filter(player => {
+                            return player.ranking >= minRanking && player.ranking <= maxRanking
+                        })
+                        .filter(player => {
+                            if (country === '') return player
+                            return player.country === country
+                        }));
+            })
+            .catch(err => console.log(err));
+    }, []);
 
     return (
         <BackgroundContainer background={Background}>

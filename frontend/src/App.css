@@ -9,6 +9,12 @@
 }
 
 body{
-  min-width: 360px;
+  min-width: 380px;
   overflow-x: hidden;
+}
+
+@media all and (max-width: 380px){
+  body{
+    overflow-x: scroll
+  }
 }

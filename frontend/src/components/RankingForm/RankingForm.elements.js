@@ -5,13 +5,12 @@ export const FormContainer = styled.div`
 position: absolute;
 z-index: 5;
 right: 0;
-transform: translateX(${({ display }) => display ? 0 : '320px'});
 transition: all 0.5s ease-in-out;
 background-color: ${Colors.darkBlue};
 color: #fff;
 display: flex;
 flex-direction: ${({ display }) => display ? 'column' : 'row'};
-height: ${({ display }) => display ? 'auto' : '100%'};
+height: 100%;
 `;
 
 export const FormTitleContainer = styled.div`
@@ -20,6 +19,9 @@ flex-direction: column;
 justify-content: flex-start;
 align-items: center;
 width: ${({ display }) => display ? '100%' : '160px'};
+@media all and (max-width:960px){
+    width: ${({ display }) => display ? '100%' : '120px'};
+}
 `;
 
 export const FormTitle = styled.h3`
@@ -30,7 +32,7 @@ padding: 1em 0;
 export const Form = styled.form`
 width: 20em;
 padding: 1em;
-display: flex;
+display: ${({ display }) => display ? 'flex' : 'none'};
 flex-direction: column;
 justify-content: center;
 align-items: center;
