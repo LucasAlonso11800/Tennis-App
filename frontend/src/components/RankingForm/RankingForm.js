@@ -4,13 +4,11 @@ import {
     FormTitleContainer,
     FormTitle,
     Form,
-    MinRankingInput,
-    MaxRankingInput,
-    CountrySelect,
+    Label,
+    RankingInput,
+    Select,
     countries,
-    CountryOption,
-    TourSelect,
-    TourOption,
+    Option,
     FormSubmit
 } from './RankingForm.elements';
 
@@ -27,19 +25,38 @@ function RankingForm({ minRanking, setMinRanking, maxRanking, setMaxRanking, set
                     : <FaAngleDoubleLeft onClick={() => setIsDisplayed(true)} />}
             </FormTitleContainer>
             <Form>
-                <MinRankingInput value={minRanking} onChange={e => setMinRanking(e.target.value)} />
-                <MaxRankingInput value={maxRanking} onChange={e => setMaxRanking(e.target.value)} />
-                <CountrySelect onClick={e => setCountry(e.target.value)}>
+                <Label htmlFor='min-ranking'>Higher ranking</Label>
+                <RankingInput
+                    value={minRanking}
+                    onChange={e => setMinRanking(e.target.value)}
+                    name='min-ranking'
+                    type='number'
+                    min='1'
+                    max='249'
+                />
+                <Label htmlFor='max-ranking'>Lower ranking</Label>
+                <RankingInput
+                    value={maxRanking}
+                    onChange={e => setMaxRanking(e.target.value)}
+                    name='max-ranking'
+                    type='number'
+                    min="2"
+                    max="250"
+                />
+                <Label htmlFor='country'>Country</Label>
+                <Select onClick={e => setCountry(e.target.value)} name='country'>
+                    <Option value=''>All</Option>
                     {countries.map(country => {
-                        return <CountryOption key={country} value={country}>
+                        return <Option key={country} value={country}>
                             {country}
-                        </CountryOption>
+                        </Option>
                     })}
-                </CountrySelect>
-                <TourSelect onClick={e => setTour(e.target.value)}>
-                    <TourOption value={'ATP'}>ATP</TourOption>
-                    <TourOption value={'WTA'}>WTA</TourOption>
-                </TourSelect>
+                </Select>
+                <Label htmlFor='tour'>Tour</Label>
+                <Select onClick={e => setTour(e.target.value)} name='tour'>
+                    <Option value={'ATP'}>ATP</Option>
+                    <Option value={'WTA'}>WTA</Option>
+                </Select>
                 <FormSubmit onClick={e => filterPlayers(e)}>Filter Players</FormSubmit>
             </Form>
         </FormContainer>

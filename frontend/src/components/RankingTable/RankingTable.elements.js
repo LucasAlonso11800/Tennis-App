@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Colors } from '../../globalStyles';
 
 export const Table = styled.table`
-width: 90%;
+width: ${({ width }) => width ? `${width}px` : ''};
 text-align: center;
 `;
 
