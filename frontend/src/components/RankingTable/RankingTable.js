@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     Table,
     TableHead,
@@ -18,6 +18,9 @@ import { FaArrowCircleUp, FaArrowCircleDown, FaEquals } from 'react-icons/fa';
 function RankingTable({ rankings }) {
     const [width, setWidth] = useState();
     window.addEventListener('resize', () => setWidth(window.innerWidth - 160));
+    useEffect(() => {
+        setWidth(window.innerWidth - 160);
+    }, []);
 
     return (
         <Table width={width}>
