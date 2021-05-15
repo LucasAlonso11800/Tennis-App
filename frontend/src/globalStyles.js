@@ -10,3 +10,8 @@ display: flex;
 flex-direction: column;
 position: relative;
 `
+
+export const Colors = {
+    darkBlue: '#101522',
+    beige: '#f5f5dc'
+};

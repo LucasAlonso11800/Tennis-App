@@ -1,9 +1,10 @@
-import styled from 'styled-components'
-import { Link } from 'react-router-dom';;
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { Colors } from '../../globalStyles';
 
 export const Header = styled.header`
 width: 100%;
-background: #101522;
+background-color: ${Colors.darkBlue};
 @media all and (max-width: 960px){
     padding: 1em 0;
 }
@@ -52,7 +53,7 @@ flex-grow: 1;
     top: 70px;
     left: ${({ isDisplayed }) => (isDisplayed ? 0 : '-105%')};
     transition: all 0.5s ease-in-out;
-    background: #101522;
+    background-color: ${Colors.darkBlue};
     z-index: 10;
 }
 @media all and (max-width: 600px){
@@ -88,7 +89,7 @@ position: absolute;
 top: ${({ isDisplayed }) => isDisplayed ? 1 : '-10%'};
 transition: all 0.5s ease-in-out;
 z-index: 10;
-background: #101522;
+background-color: ${Colors.darkBlue};
 width: 100%;
 @media all and (max-width: 600px){
     top: 0;

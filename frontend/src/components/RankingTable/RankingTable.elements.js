@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Colors } from '../../globalStyles';
 
 export const Table = styled.table`
 width: 90%;
@@ -6,16 +7,17 @@ text-align: center;
 `;
 
 export const TableHead = styled.thead`
-background-color: rgba(245, 245, 220, 1);
-color: #101522;
-;`;
+background-color: ${Colors.beige};
+color: ${Colors.darkBlue};
+`;
+
 export const TableRow = styled.tr``;
 export const TableHeader = styled.th``;
 export const TableBody = styled.tbody``;
 
 export const Player = styled.tr`
 background-color: rgba(245, 245, 220, 0.3);
-color: #101522;
+color: ${Colors.darkBlue};
 &:hover{
     background-color: rgba(245, 245, 245, 0.6)
 }
