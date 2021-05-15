@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { RankingForm, RankingTable } from '../../components/index';
+
 import { BackgroundContainer } from '../../globalStyles';
 import Background from '../../assets/backgrounds/Wimbledon.jpg';
+
+import { RankingForm, RankingTable } from '../../components/index';
 
 function RankingPage() {
     const [isLoading, setIsLoading] = useState(true);

@@ -3,8 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 
 import { Navbar } from './components/index';
-import { LandingPage, RankingPage, RaceToLondonPage } from './pages/index';
-import CurrentTournamentsPage from './pages/CurrentTournamentsPage';
+import { LandingPage, RankingPage, RaceToLondonPage, CurrentTournamentsPage } from './pages/index';
 import SeasonCalendarPage from './pages/SeasonCalendarPage';
 import NewsPage from './pages/NewsPage';
 import SignIn from './pages/SignIn';

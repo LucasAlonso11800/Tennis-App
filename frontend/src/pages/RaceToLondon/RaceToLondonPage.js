@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { RankingTable } from '../../components/index';
+
 import { BackgroundContainer } from '../../globalStyles';
 import Background from '../../assets/backgrounds/Wozniacky.png';
 
-function RaceToLondonPage(){
+import { RankingTable, RankingForm } from '../../components/index';
+
+function RaceToLondonPage() {
     const [isLoading, setIsLoading] = useState(true);
     const [rankings, setRankings] = useState([]);
     const [minRanking, setMinRanking] = useState(1);
@@ -34,7 +36,7 @@ function RaceToLondonPage(){
     };
 
     useEffect(() => {
-        axios.post('https://tennis-world-app.herokuapp.com/ranking', {
+        axios.post('https://tennis-world-app.herokuapp.com/london-ranking', {
             tour: tour
         })
             .then(res => {
@@ -56,6 +58,15 @@ function RaceToLondonPage(){
     return (
         <BackgroundContainer background={Background}>
             <RankingTable rankings={rankings} />
+            <RankingForm
+                minRanking={minRanking}
+                setMinRanking={setMinRanking}
+                maxRanking={maxRanking}
+                setMaxRanking={setMaxRanking}
+                setCountry={setCountry}
+                setTour={setTour} 
+                filterPlayers={filterPlayers}
+            />
         </BackgroundContainer>
     )
 };
