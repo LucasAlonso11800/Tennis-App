@@ -13,23 +13,20 @@ import {
 
 function Article({ article }) {
     const { url, title, urlToImage, description } = article;
-    const [userId, setUserId] = useContext(GlobalContext);
 
+    const [userId, setUserId] = useContext(GlobalContext);
     const [saved, setSaved] = useState(false);
     const [loggedIn, setLoggedIn] = useState(true);
 
     function saveArticle() {
         if (saved) {
             axios.post('https://tennis-world-app.herokuapp.com/news/delete', { url, userId })
-                .then(res => {
-                    console.log(res.data);
-                    setSaved(!saved);
-                })
+                .then(() => setSaved(!saved))
                 .catch(err => console.log(err))
         }
         else {
             axios.post('https://tennis-world-app.herokuapp.com/news/add', { title, urlToImage, description, url, userId })
-                .then(() => setSaved(!saved))
+                .then(() => setSaved(!saved))   
                 .catch(err => err ? setLoggedIn(!loggedIn) : '')
         }
     };
@@ -43,10 +40,9 @@ function Article({ article }) {
                 <ArticleButton type="button">
                     <ArticleLink target='_BLANK' href={url}>Read More</ArticleLink>
                 </ArticleButton>
-                <ArticleButton
-                    type="button"
-                    onClick={() => saveArticle}>
-                    Save Article
+                <ArticleButton type="button" onClick={saveArticle} br={true}>
+                    {!loggedIn ? 'Be sure to log in to save articles' :
+                        saved ? 'Article saved' : 'Save Article'}
                 </ArticleButton>
             </ArticleButtons>
         </ArticleContainer>

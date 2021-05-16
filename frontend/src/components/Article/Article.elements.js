@@ -36,6 +36,7 @@ padding: 0.5em 1em;
 background-color: ${Colors.beige};
 color: ${Colors.darkBlue};
 width: 100%;
+font-weight: ${({br}) => br ? 'bold' : 'normal'};
 `
 export const ArticleLink = styled.a`
 text-decoration: none;
