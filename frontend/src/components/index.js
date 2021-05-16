@@ -6,3 +6,4 @@ export { default as PageTitle } from './PageTitle/PageTitle';
 export { default as Matches } from './Matches/Matches';
 export { default as Match } from './Match/Match';
 export { default as SeasonTable } from './SeasonTable/SeasonTable';
+export { default as Tournament } from './Tournament/Tournament';
