@@ -3,8 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 
 import { Navbar } from './components/index';
-import { LandingPage, RankingPage, RaceToLondonPage, CurrentTournamentsPage } from './pages/index';
-import SeasonCalendarPage from './pages/SeasonCalendarPage';
+import { LandingPage, RankingPage, RaceToLondonPage, CurrentTournamentsPage, SeasonPage } from './pages/index';
 import NewsPage from './pages/NewsPage';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
@@ -21,7 +20,7 @@ function App() {
                 <Route path="/ranking" component={RankingPage} />
                 <Route path="/race-to-london" component={RaceToLondonPage} />
                 <Route path="/current-tournaments" component={CurrentTournamentsPage} />
-                <Route path="/season" component={SeasonCalendarPage} />
+                <Route path="/season" component={SeasonPage} />
                 <Route path="/news" component={NewsPage} />
                 <Route path="/signin" component={SignIn} />
                 <Route path="/signup" component={SignUp} />
