@@ -37,99 +37,32 @@ export const TableBody = styled.tbody`
 `;
 
 export const Player = styled.tr`
-background-color: rgba(245, 245, 220, 0.4);
+background-color: ${Colors.beigeTransparent};
 color: ${Colors.darkBlue};
 font-weight: bold;
 @media all and (max-width: 535px){
     display: block;
 }
 &:hover{
-    background-color: rgba(245, 245, 245, 0.7)
+    background-color: ${Colors.beigeTransparentHover}
 }
 `;
 
-
-export const PlayerRanking = styled.td`
+export const PlayerData = styled.td`
 @media all and (max-width: 535px){
     position: relative;
     padding-left: 50%;
     padding-top: 0.5em;
-    border-top: 1px solid ${Colors.darkBlue};
     display: block;
+    border-top: ${({borderTop}) => borderTop ? `1px solid ${Colors.darkBlue}` : ''};
+    border-bottom: ${({borderBottom}) => borderBottom ? `1px solid ${Colors.darkBlue}` : ''};
     ::before{
         position: absolute;
         left: 6px;
         width: 45%;
         padding-right: 10px;
         white-space: nowrap;
-        content: 'Ranking'
-    }
-}`;
-
-export const PlayerName = styled.td`
-@media all and (max-width: 535px){
-    position: relative;
-    padding-left: 50%;
-    display: block;
-    font-weight: 500;
-    ::before{
-        font-weight: 500;
-        position: absolute;
-        left: 6px;
-        width: 45%;
-        padding-right: 10px;
-        white-space: nowrap;
-        content: 'Name'
-    }
-}`;
-
-export const PlayerCountry = styled.td`
-@media all and (max-width: 535px){
-    position: relative;
-    padding-left: 50%;
-    display: block;
-    font-weight: 500;
-    ::before{
-        font-weight: 500;
-        position: absolute;
-        left: 6px;
-        width: 45%;
-        padding-right: 10px;
-        content: 'Country'
-    }
-}`;
-
-export const PlayerPoints = styled.td`
-@media all and (max-width: 535px){
-    position: relative;
-    padding-left: 50%;
-    display: block;
-    font-weight: 500;
-    ::before{
-        font-weight: 500;
-        position: absolute;
-        left: 6px;
-        width: 45%;
-        padding-right: 10px;
-        white-space: nowrap;
-        content: 'Points'
-    }
-}`;
-
-export const PlayerMovement = styled.td`
-@media all and (max-width: 535px){
-    position: relative;
-    padding-left: 50%;
-    display: block;
-    padding-bottom: 0.5em;
-    border-bottom: 1px solid ${Colors.darkBlue};
-    font-weight: 500;
-    ::before{
-        font-weight: 500;
-        position: absolute;
-        left: 6px;
-        width: 45%;
-        padding-right: 10px;
-        content: 'Movement'
-    }
-}`;
+        content: ${({content}) => content ? content : ''};
+    };
+}
+`

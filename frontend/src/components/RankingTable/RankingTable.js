@@ -6,11 +6,7 @@ import {
     TableHeader,
     TableBody,
     Player,
-    PlayerCountry,
-    PlayerName,
-    PlayerPoints,
-    PlayerMovement,
-    PlayerRanking
+    PlayerData
 } from './RankingTable.elements';
 
 import { FaArrowCircleUp, FaArrowCircleDown, FaEquals } from 'react-icons/fa';
@@ -27,9 +23,9 @@ function RankingTable({ rankings }) {
         const smallerThan960 = windowWidth < 960;
 
         setWidth(windowWidth - 170);
-        if(smallerThan960) setWidth(windowWidth - 135);
-        if(smallerThan395) setWidth(windowWidth - 120);
-        if(smallerThan380) setWidth(265)
+        if (smallerThan960) setWidth(windowWidth - 135);
+        if (smallerThan395) setWidth(windowWidth - 120);
+        if (smallerThan380) setWidth(265)
     }, [windowWidth]);
 
     return (
@@ -47,16 +43,16 @@ function RankingTable({ rankings }) {
                 {rankings.map(ranking => {
                     return (
                         <Player key={ranking.id}>
-                            <PlayerRanking>{ranking.ranking}</PlayerRanking>
-                            <PlayerName>{ranking.full_name}</PlayerName>
-                            <PlayerCountry>{ranking.country}</PlayerCountry>
-                            <PlayerPoints>{ranking.ranking_points}</PlayerPoints>
-                            <PlayerMovement>
+                            <PlayerData content={'Ranking'} borderTop={true}>{ranking.ranking}</PlayerData>
+                            <PlayerData content={'Player'}>{ranking.full_name}</PlayerData>
+                            <PlayerData content={'Country'}>{ranking.country}</PlayerData>
+                            <PlayerData content={'Points'}>{ranking.ranking_points}</PlayerData>
+                            <PlayerData content={'Movement'} borderBottom={true}>
                                 {ranking.movement > 0 ? <FaArrowCircleUp /> :
                                     ranking.movement === '' ? <FaEquals /> :
                                         <FaArrowCircleDown />
                                 }
-                            </PlayerMovement>
+                            </PlayerData>
                         </Player>
                     )
                 })}
