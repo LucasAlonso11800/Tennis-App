@@ -11,18 +11,14 @@ function SeasonPage() {
     const [tournaments, setTournaments] = useState([]);
     const [tour, setTour] = useState('ATP')
 
-    // useEffect(() => {
-    //     axios.post('https://tennis-world-app.herokuapp.com/season-calendar', {
-    //         tour: tour
-    //     })
-    //         .then(res => {
-    //             setIsLoading(false)
-    //             setTournaments(res.data.results);
-    //         })
-    //         .catch(error => {
-    //             console.log(error);
-    //         })
-    // }, [tour]);
+    useEffect(() => {
+        axios.post('https://tennis-world-app.herokuapp.com/season-calendar', { tour })
+            .then(res => {
+                setIsLoading(false)
+                setTournaments(res.data.results);
+            })
+            .catch(err => console.log(err));
+    }, [tour]);
 
     return (
         <BackgroundContainer background={Background}>
@@ -37,4 +33,4 @@ function SeasonPage() {
     )
 };
 
-export default SeasonPage
+export default SeasonPage;
