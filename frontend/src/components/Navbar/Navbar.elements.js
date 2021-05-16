@@ -75,7 +75,7 @@ position: relative;
 `
 
 export const NavMenuTitle = styled.li`
-padding: 1em;
+padding: 1.5em 1em;
 text-align: center;
 color: #fff;
 &:hover{
