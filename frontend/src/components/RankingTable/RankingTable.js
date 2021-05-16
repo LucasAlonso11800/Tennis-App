@@ -41,15 +41,16 @@ function RankingTable({ rankings }) {
             </TableHead>
             <TableBody>
                 {rankings.map(ranking => {
+                    const { full_name, country, ranking_points, movement } = ranking
                     return (
                         <Player key={ranking.id}>
                             <PlayerData content={'Ranking'} borderTop={true}>{ranking.ranking}</PlayerData>
-                            <PlayerData content={'Player'}>{ranking.full_name}</PlayerData>
-                            <PlayerData content={'Country'}>{ranking.country}</PlayerData>
-                            <PlayerData content={'Points'}>{ranking.ranking_points}</PlayerData>
+                            <PlayerData content={'Player'}>{full_name}</PlayerData>
+                            <PlayerData content={'Country'}>{country}</PlayerData>
+                            <PlayerData content={'Points'}>{ranking_points}</PlayerData>
                             <PlayerData content={'Movement'} borderBottom={true}>
-                                {ranking.movement > 0 ? <FaArrowCircleUp /> :
-                                    ranking.movement === '' ? <FaEquals /> :
+                                {movement > 0 ? <FaArrowCircleUp /> :
+                                    movement === '' ? <FaEquals /> :
                                         <FaArrowCircleDown />
                                 }
                             </PlayerData>

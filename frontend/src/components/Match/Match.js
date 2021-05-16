@@ -9,7 +9,7 @@ import {
 } from './Match.elements';
 
 function Match({ match }) {
-    const { result } = match;
+    const { result, title, round_name, court, date } = match;
     let tiebreaks;
     let isThereThirdSet;
     let isThereFourthSet;
@@ -33,11 +33,11 @@ function Match({ match }) {
 
     return (
         <MatchContainer>
-            <MatchTitle>{match.title}</MatchTitle>
+            <MatchTitle>{title}</MatchTitle>
             <MatchDataContainer>
-                <MatchData><b>Round: </b>{match.round_name}</MatchData>
-                <MatchData><b>Court: </b>{match.court}</MatchData>
-                <MatchData><b>Hour: </b>{match.date.substring(11, 16)} GMT</MatchData>
+                <MatchData><b>Round: </b>{round_name}</MatchData>
+                <MatchData><b>Court: </b>{court}</MatchData>
+                <MatchData><b>Hour: </b>{date.substring(11, 16)} GMT</MatchData>
             </MatchDataContainer>
             {result ?
                 <Result>{result.home_set1} - {result.away_set1}<Space />
