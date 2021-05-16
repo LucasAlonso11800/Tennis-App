@@ -1,11 +1,15 @@
-import React from 'react'
+import React from 'react';
+import { ArticlesContainer } from './Articles.elements';
+import { Article } from '../index';
 
-function Articles() {
+function Articles({ news }) {
     return (
-        <div>
-            
-        </div>
+        <ArticlesContainer>
+            {news.map(article => { 
+                return <Article key={article.url} article={article}/>
+            })}
+        </ArticlesContainer>
     )
-}
+};
 
-export default Articles
+export default Articles;

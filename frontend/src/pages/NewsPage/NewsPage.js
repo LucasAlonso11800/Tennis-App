@@ -11,7 +11,8 @@ function NewsPage() {
     const [news, setNews] = useState([]);
     const [query, setQuery] = useState('');
 
-    function searchNews() {
+    function searchNews(e) {
+        e.preventDefault();
         setIsLoading(true)
         axios.post('https://tennis-world-app.herokuapp.com/news', { query })
             .then(res => {

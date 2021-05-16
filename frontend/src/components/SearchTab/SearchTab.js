@@ -13,7 +13,7 @@ function SearchTab({ query, setQuery, searchNews }) {
                 placeholder='Search News About Your Favourite Players and Tournaments'
                 value={query}
                 onChange={e => setQuery(e.target.value)} />
-            <SearchButton onClick={() => searchNews}>Search News</SearchButton>
+            <SearchButton onClick={e => searchNews(e)}>Search News</SearchButton>
         </FormContainer>
     )
 };
