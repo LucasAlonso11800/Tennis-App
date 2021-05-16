@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 import { BackgroundContainer } from '../../globalStyles';
-import Background from '../../assets/backgrounds/nAccordionCollapse.jpg';
+import Background from '../../assets/backgrounds/Nadal.jpg';
 
 import { SearchTab, Articles } from '../../components/index';
 
@@ -23,7 +23,8 @@ function NewsPage() {
 
     return (
         <BackgroundContainer background={Background}>
-            
+            <SearchTab query={query} setQuery={setQuery} searchNews={searchNews} />
+            <Articles news={news} />
         </BackgroundContainer>
     )
 };
