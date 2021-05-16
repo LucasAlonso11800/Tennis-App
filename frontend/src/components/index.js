@@ -7,3 +7,6 @@ export { default as Matches } from './Matches/Matches';
 export { default as Match } from './Match/Match';
 export { default as SeasonTable } from './SeasonTable/SeasonTable';
 export { default as Tournament } from './Tournament/Tournament';
+export { default as Article } from './Article/Article';
+export { default as Articles } from './Articles/Articles';
+export { default as SearchTab } from './SearchTab/SearchTab';
