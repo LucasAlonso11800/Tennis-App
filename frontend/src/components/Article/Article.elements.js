@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { Colors } from '../../globalStyles';
+import { Colors, Shadow } from '../../globalStyles';
 
 export const ArticleContainer = styled.div`
 width: 40%;
 padding: 1.5em;
 margin-bottom: 1em;
-box-shadow: 0 0 5px 1px ${Colors.darkBlue};
+box-shadow: ${Shadow};
 background-color: ${Colors.beigeTransparent};
 &:hover{
     background-color: ${Colors.beigeTransparentHover}
@@ -23,7 +23,7 @@ margin-bottom: 1em;
 `
 export const ArticleImg = styled.img`
 width: 100%;
-box-shadow: 0 0 5px 1px ${Colors.darkBlue};
+box-shadow: ${Shadow};
 ` 
 export const ArticleDescription = styled.p`
 margin: 1em 0;

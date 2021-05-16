@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Colors } from '../../globalStyles';
+import { Colors, Shadow } from '../../globalStyles';
 
 export const MatchContainer = styled.div`
 width: 40%;
@@ -8,7 +8,7 @@ flex-direction: column;
 padding: 1em;
 margin-bottom: 1em;
 background-color: ${Colors.beigeTransparent};
-box-shadow: 0 0 5px 1px ${Colors.darkBlue};
+box-shadow: ${Shadow};
 @media all and (max-width:700px){
     width: 45%
 }

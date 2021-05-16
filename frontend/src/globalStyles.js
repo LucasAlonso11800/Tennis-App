@@ -18,3 +18,5 @@ export const Colors = {
     beigeTransparent: 'rgba(240, 240, 225, 0.5)',
     beigeTransparentHover: 'rgba(240, 240, 225, 0.7)'
 };
+
+export const Shadow = `0 0 5px 1 ${Colors.darkBlue}`

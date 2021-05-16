@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Colors } from '../../globalStyles';
+import { Colors, Shadow } from '../../globalStyles';
 
 export const LandingSectionContainer = styled.section`
 background-color: ${({ lightBg }) => lightBg ? Colors.beige : Colors.darkBlue};
@@ -59,5 +59,5 @@ width: 100%;
 max-width: 600px;
 object-fit: cover;
 border-radius: 5px;
-box-shadow: ${({ lightBg }) => lightBg ? '0 0 5px 1px #000' : `0 0 5px 1px ${Colors.beige}`};
+box-shadow: ${({ lightBg }) => lightBg ? Shadow : `0 0 5px 1px ${Colors.beige}`};
 `
