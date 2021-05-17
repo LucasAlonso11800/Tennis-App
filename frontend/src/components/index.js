@@ -10,3 +10,4 @@ export { default as Tournament } from './Tournament/Tournament';
 export { default as Article } from './Article/Article';
 export { default as Articles } from './Articles/Articles';
 export { default as SearchTab } from './SearchTab/SearchTab';
+export { default as WarningCard } from './WarningCard/WarningCard';
