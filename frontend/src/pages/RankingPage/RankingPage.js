@@ -14,9 +14,9 @@ function RankingPage() {
     const [country, setCountry] = useState('');
     const [tour, setTour] = useState('ATP');
 
-    function filterPlayers(e) {
+    function getAndFilterPlayers(e) {
+        if(e) e.preventDefault();
         setIsLoading(true);
-        e.preventDefault();
         axios.post('https://tennis-world-app.herokuapp.com/ranking', { tour })
             .then(res => {
                 setIsLoading(false);
@@ -35,21 +35,7 @@ function RankingPage() {
     };
 
     useEffect(() => {
-        axios.post('https://tennis-world-app.herokuapp.com/ranking', { tour })
-            .then(res => {
-                setIsLoading(false)
-                const data = res.data.results.rankings
-                setRankings(
-                    data
-                        .filter(player => {
-                            return player.ranking >= minRanking && player.ranking <= maxRanking
-                        })
-                        .filter(player => {
-                            if (country === '') return player
-                            return player.country === country
-                        }));
-            })
-            .catch(err => console.log(err));
+        getAndFilterPlayers()
     }, []);
 
     return (

@@ -14,7 +14,7 @@ import {
 
 import { FaAngleDoubleLeft, FaTimes } from 'react-icons/fa';
 
-function RankingForm({ minRanking, setMinRanking, maxRanking, setMaxRanking, setCountry, setTour, filterPlayers }) {
+function RankingForm({ minRanking, setMinRanking, maxRanking, setMaxRanking, setCountry, setTour, getAndFilterPlayers }) {
     const [isDisplayed, setIsDisplayed] = useState(false);
 
     return (
@@ -57,7 +57,7 @@ function RankingForm({ minRanking, setMinRanking, maxRanking, setMaxRanking, set
                     <Option value={'ATP'}>ATP</Option>
                     <Option value={'WTA'}>WTA</Option>
                 </Select>
-                <FormSubmit onClick={e => filterPlayers(e)}>Filter Players</FormSubmit>
+                <FormSubmit onClick={e => getAndFilterPlayers(e)}>Filter Players</FormSubmit>
             </Form>
         </FormContainer>
     )

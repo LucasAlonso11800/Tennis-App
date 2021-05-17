@@ -14,9 +14,10 @@ function RaceToLondonPage() {
     const [country, setCountry] = useState('');
     const [tour, setTour] = useState('ATP');
 
-    function filterPlayers(e) {
+    function getAndFilterPlayers(e) {
+        if(e) e.preventDefault();
         setIsLoading(true);
-        axios.post('https://tennis-world-app.herokuapp.com/london-ranking', { tour })
+        axios.post('https://tennis-world-app.herokuapp.com/race-to-london', { tour })
             .then(res => {
                 setIsLoading(false);
                 const data = res.data.results.rankings
@@ -34,21 +35,7 @@ function RaceToLondonPage() {
     };
 
     useEffect(() => {
-        axios.post('https://tennis-world-app.herokuapp.com/london-ranking', { tour })
-            .then(res => {
-                setIsLoading(false)
-                const data = res.data.results.rankings
-                setRankings(
-                    data
-                        .filter(player => {
-                            return player.ranking >= minRanking && player.ranking <= maxRanking
-                        })
-                        .filter(player => {
-                            if (country === '') return player
-                            return player.country === country
-                        }));
-            })
-            .catch(err => console.log(err));
+        getAndFilterPlayers()
     }, []);
 
     return (
@@ -61,7 +48,7 @@ function RaceToLondonPage() {
                 setMaxRanking={setMaxRanking}
                 setCountry={setCountry}
                 setTour={setTour}
-                filterPlayers={filterPlayers}
+                getAndFilterPlayers={getAndFilterPlayers}
             />
         </BackgroundContainer>
     )
