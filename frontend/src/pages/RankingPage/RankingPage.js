@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import { BackgroundContainer } from '../../globalStyles';
-import Background from '../../assets/backgrounds/Wimbledon.jpg';
+import Background from '../../assets/backgrounds/Australia.jpg';
 
 import { RankingForm, RankingTable } from '../../components/index';
 

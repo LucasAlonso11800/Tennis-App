@@ -3,7 +3,7 @@ import axios from 'axios';
 import { GlobalContext } from '../../context/GlobalState';
 
 import { BackgroundContainer } from '../../globalStyles';
-import Background from '../../assets/backgrounds/Delpo.jpg';
+import Background from '../../assets/backgrounds/Finals.jpg';
 
 import { UserForm } from '../../components/index';
 

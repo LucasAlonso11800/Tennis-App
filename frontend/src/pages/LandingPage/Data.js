@@ -1,9 +1,9 @@
-import Australia from '../../assets/miniatures/Australian-Open.jpg';
-import RolandGarros from '../../assets/miniatures/Roland-garros.jpg';
-import Wimbledon from '../../assets/miniatures/Wimbledon.jpg';
-import UsOpen from '../../assets/miniatures/Us-Open.jpg';
-import Davis from '../../assets/miniatures/Davis.jpg';
-import GoldMedal from '../../assets/miniatures/Gold-medal.jpg';
+import Djokovic from '../../assets/miniatures/Djokovic.jpg';
+import Nadal from '../../assets/miniatures/Nadal.jpg';
+import Federer from '../../assets/miniatures/Federer.jpg';
+import Sharapova from '../../assets/miniatures/Sharapova.jpg';
+import Delpo from '../../assets/miniatures/Delpo.jpg';
+import Ivanovic from '../../assets/miniatures/Ivanovic.jpg';
 
 export const sectionOne = {
     lightBg: true,
@@ -13,8 +13,8 @@ export const sectionOne = {
     text: 'Check the current ATP and WTA rankings, filter players by country and ranking',
     link: '/ranking',
     linkText: 'Rankings',
-    img: Australia,
-    alt: 'Australian Open'
+    img: Djokovic,
+    alt: 'Djokovic'
 };
 
 export const sectionTwo = {
@@ -25,8 +25,8 @@ export const sectionTwo = {
     text: "Check the current season's ranking and see if your favourite player is getting into the World Tour Finals",
     link: '/race-to-london',
     linkText: 'Race to London',
-    img: RolandGarros,
-    alt: 'Roland Garros'
+    img: Nadal,
+    alt: 'Nadal'
 };
 
 export const sectionThree = {
@@ -37,8 +37,8 @@ export const sectionThree = {
     text: "Check the matches being played today in both ATP and WTA circuits",
     link: '/current-tournaments',
     linkText: 'Current Tournaments',
-    img: Wimbledon,
-    alt: 'Wimbledon'
+    img: Federer,
+    alt: 'Federer'
 };
 
 export const sectionFour = {
@@ -49,8 +49,8 @@ export const sectionFour = {
     text: "Check the current season calendar and the dates and cities each tournament is held",
     link: '/season',
     linkText: 'Season Calendar',
-    img: UsOpen,
-    alt: 'Us Open'
+    img: Sharapova,
+    alt: 'Sharapova'
 };
 
 export const sectionFive = {
@@ -61,8 +61,8 @@ export const sectionFive = {
     text: "Look for the most recent news about Tennis, tournaments and your favourite players",
     link: '/news',
     linkText: 'News',
-    img: Davis,
-    alt: 'Davis'
+    img: Delpo,
+    alt: 'Delpo'
 };
 
 export const sectionSix = {
@@ -73,6 +73,6 @@ export const sectionSix = {
     text: "Create your account and keep track of your favourite articles",
     link: '/user-articles',
     linkText: 'Your articles',
-    img: GoldMedal,
-    alt: 'Gold Medal'
+    img: Ivanovic,
+    alt: 'Ivanovic'
 };

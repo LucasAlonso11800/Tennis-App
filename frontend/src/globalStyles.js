@@ -10,9 +10,6 @@ min-height: 100vh;
 display: flex;
 flex-direction: column;
 position: relative;
-@media all and (max-width: 600px){
-    background-position-x: center;
-}
 `
 
 export const Colors = {

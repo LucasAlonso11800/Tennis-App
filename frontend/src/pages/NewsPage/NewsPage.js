@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 import { BackgroundContainer } from '../../globalStyles';
-import Background from '../../assets/backgrounds/Nadal.jpg';
+import Background from '../../assets/backgrounds/Clay.jpg';
 
 import { SearchTab, Articles } from '../../components/index';
 

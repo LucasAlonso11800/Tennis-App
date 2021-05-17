@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BackgroundContainer } from '../../globalStyles';
-import Background from '../../assets/backgrounds/Sharapova.jpg'
+import Background from '../../assets/backgrounds/Wimbledon.jpeg'
 
 import { PageTitle, Matches } from '../../components/index';
 
