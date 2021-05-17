@@ -18,7 +18,6 @@ import ATPLogo from '../../assets/logos/ATP.png';
 import WTALogo from '../../assets/logos/WTA.svg';
 
 function Navbar() {
-    const [username, setUsername] = useContext(GlobalContext);
     const [userId, setUserId] = useContext(GlobalContext);
 
     const [display, setDisplay] = useState({});
@@ -43,10 +42,7 @@ function Navbar() {
             out: 'Log me out'
         })
             .then(res => {
-                if (res.data === 'Logged out') {
-                    setUsername('')
-                    setUserId('')
-                }
+                if (res.data === 'Logged out') setUserId('')
             })
             .catch(err => console.log(err));
     }

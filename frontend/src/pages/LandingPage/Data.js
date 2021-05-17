@@ -6,7 +6,7 @@ import Delpo from '../../assets/miniatures/Delpo.jpg';
 import Ivanovic from '../../assets/miniatures/Ivanovic.jpg';
 
 export const sectionOne = {
-    lightBg: true,
+    lightbg: true,
     imgStart: true,
     heading: `Updated to ${new Date().toISOString().substring(0, 10)}`,
     title: 'Rankings ATP & WTA',
@@ -18,7 +18,7 @@ export const sectionOne = {
 };
 
 export const sectionTwo = {
-    lightBg: false,
+    lightbg: false,
     imgStart: false,
     heading: `Updated to ${new Date().toISOString().substring(0, 10)}`,
     title: 'Race to London',
@@ -30,7 +30,7 @@ export const sectionTwo = {
 };
 
 export const sectionThree = {
-    lightBg: true,
+    lightbg: true,
     imgStart: true,
     heading: `Updated to ${new Date().toISOString().substring(0, 10)}`,
     title: 'Current Tournaments',
@@ -42,7 +42,7 @@ export const sectionThree = {
 };
 
 export const sectionFour = {
-    lightBg: false,
+    lightbg: false,
     imgStart: false,
     heading: `Updated to ${new Date().toISOString().substring(0, 10)}`,
     title: 'Season Calendar',
@@ -54,7 +54,7 @@ export const sectionFour = {
 };
 
 export const sectionFive = {
-    lightBg: true,
+    lightbg: true,
     imgStart: true,
     heading: `Updated to ${new Date().toISOString().substring(0, 10)}`,
     title: 'News',
@@ -66,7 +66,7 @@ export const sectionFive = {
 };
 
 export const sectionSix = {
-    lightBg: false,
+    lightbg: false,
     imgStart: false,
     heading: `Updated to ${new Date().toISOString().substring(0, 10)}`,
     title: 'Your Articles',

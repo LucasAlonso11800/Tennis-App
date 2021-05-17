@@ -15,6 +15,10 @@ function RankingTable({ rankings }) {
     const [windowWidth, setWindowWidth] = useState()
     const [width, setWidth] = useState();
 
+    useEffect(() => {
+        setWindowWidth(window.innerWidth);
+    }, []);
+
     window.addEventListener('resize', () => setWindowWidth(window.innerWidth));
 
     useEffect(() => {
@@ -25,7 +29,7 @@ function RankingTable({ rankings }) {
         setWidth(windowWidth - 170);
         if (smallerThan960) setWidth(windowWidth - 135);
         if (smallerThan395) setWidth(windowWidth - 120);
-        if (smallerThan380) setWidth(265)
+        if (smallerThan380) setWidth(265);
     }, [windowWidth]);
 
     return (

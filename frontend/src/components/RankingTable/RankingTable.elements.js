@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Colors } from '../../globalStyles';
 
 export const Table = styled.table`
-width: ${({ width }) => width ? `${width}px` : ''};
+width: ${({ width }) => width ? `${width}px` : '100%'};
 @media all and (max-width: 535px){
     display: block;
 }

@@ -10,6 +10,8 @@ export const TableHead = styled.thead`
 background-color: ${Colors.beige};
 `;
 
-export const TableRow = styled.tr``;
+export const TableRow = styled.tr`
+font-weight: bold;
+`;
 export const TableHeader = styled.th``; 
 export const TableBody = styled.tbody``;

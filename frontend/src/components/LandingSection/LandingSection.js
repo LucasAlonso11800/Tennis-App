@@ -11,20 +11,20 @@ import {
     SectionImg
 } from './LandingSection.elements';
 
-function LandingSection({ lightBg, imgStart, heading, title, text, link, linkText, img, alt }) {
+function LandingSection({ lightbg, imgStart, heading, title, text, link, linkText, img, alt }) {
     return (
-        <LandingSectionContainer lightBg={lightBg}>
+        <LandingSectionContainer lightbg={lightbg}>
             <SectionRow imgStart={imgStart}>
                 <SectionColumn>
-                    <Heading lightBg={lightBg}>{heading}</Heading>
-                    <SectionTitle lightBg={lightBg}>{title}</SectionTitle>
-                    <SectionText lightBg={lightBg}>{text}</SectionText>
-                    <SectionButton lightBg={lightBg}>
-                        <SectionLink to={link} lightBg={lightBg}>{linkText}</SectionLink>
+                    <Heading lightbg={lightbg}>{heading}</Heading>
+                    <SectionTitle lightbg={lightbg}>{title}</SectionTitle>
+                    <SectionText lightbg={lightbg}>{text}</SectionText>
+                    <SectionButton lightbg={lightbg}>
+                        <SectionLink to={link} lightbg={lightbg}>{linkText}</SectionLink>
                     </SectionButton>
                 </SectionColumn>
                 <SectionColumn>
-                    <SectionImg lightBg={lightBg} src={img} alt={alt} />
+                    <SectionImg lightbg={lightbg} src={img} alt={alt} />
                 </SectionColumn>
             </SectionRow>
         </LandingSectionContainer>
