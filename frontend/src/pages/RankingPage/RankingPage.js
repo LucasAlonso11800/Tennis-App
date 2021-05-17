@@ -48,7 +48,7 @@ function RankingPage() {
                 setMaxRanking={setMaxRanking}
                 setCountry={setCountry}
                 setTour={setTour}
-                filterPlayers={filterPlayers}
+                filterPlayers={getAndFilterPlayers}
             />
         </BackgroundContainer>
     )
