@@ -25,7 +25,7 @@ function NewsPage() {
     return (
         <BackgroundContainer background={Background}>
             <SearchTab query={query} setQuery={setQuery} searchNews={searchNews} />
-            <Articles news={news} />
+            <Articles news={news} isSaved={false}/>
         </BackgroundContainer>
     )
 };

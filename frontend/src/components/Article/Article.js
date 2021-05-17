@@ -11,11 +11,11 @@ import {
     ArticleLink
 } from './Article.elements';
 
-function Article({ article }) {
+function Article({ article, isSaved }) {
     const { url, title, urlToImage, description } = article;
 
     const [userId, setUserId] = useContext(GlobalContext);
-    const [saved, setSaved] = useState(false);
+    const [saved, setSaved] = useState(isSaved);
     const [loggedIn, setLoggedIn] = useState(true);
 
     function saveArticle() {

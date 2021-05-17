@@ -25,7 +25,7 @@ function UserPage() {
 
     return (
         <BackgroundContainer background={Background}>
-            {isLoggedIn ? <Articles news={news} /> : <WarningCard />}
+            {isLoggedIn ? <Articles news={news} isSaved={true}/> : <WarningCard />}
         </BackgroundContainer>
     )
 };
