@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import { BackgroundContainer } from '../../globalStyles';
-import Background from '../../assets/backgrounds/Australia.jpg';
 
 import { RankingForm, RankingTable, LoadingIcon } from '../../components/index';
 
-function RankingPage() {
+function RankingPage({ endpoint, background }) {
     const [isLoading, setIsLoading] = useState(true);
     const [rankings, setRankings] = useState([]);
     const [minRanking, setMinRanking] = useState(1);
@@ -17,7 +16,7 @@ function RankingPage() {
     function getAndFilterPlayers(e) {
         setIsLoading(true);
         if (e) e.preventDefault();
-        axios.post('https://tennis-world-app.herokuapp.com/ranking', { tour })
+        axios.post(`https://tennis-world-app.herokuapp.com/${endpoint}`, { tour })
             .then(res => {
                 setIsLoading(false);
                 const data = res.data.results.rankings
@@ -39,7 +38,7 @@ function RankingPage() {
     }, []);
 
     return (
-        <BackgroundContainer background={Background}>
+        <BackgroundContainer background={background}>
             {isLoading ? <LoadingIcon /> : <RankingTable rankings={rankings} />}
             <RankingForm
                 minRanking={minRanking}
@@ -48,7 +47,7 @@ function RankingPage() {
                 setMaxRanking={setMaxRanking}
                 setCountry={setCountry}
                 setTour={setTour}
-                filterPlayers={getAndFilterPlayers}
+                getAndFilterPlayers={getAndFilterPlayers}
             />
         </BackgroundContainer>
     )
