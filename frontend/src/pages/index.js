@@ -5,3 +5,5 @@ export { default as CurrentTournamentsPage } from './CurrentTournaments/CurrentT
 export { default as SeasonPage } from './SeasonPage/SeasonPage';
 export { default as NewsPage } from './NewsPage/NewsPage';
 export { default as UserPage } from './UserPage/UserPage';
+export { default as SignInPage } from './SignInPage/SignInPage';
+export { default as SignUpPage } from './SignUpPage/SignUpPage';

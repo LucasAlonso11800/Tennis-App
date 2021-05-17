@@ -84,8 +84,8 @@ function Navbar() {
                     <NavMenu>
                         <NavMenuTitle onClick={() => handleClick('account')}>Your Account</NavMenuTitle>
                         <NavItem isDisplayed={display.account}>
-                            <NavLink to="/sign-in">Sign in</NavLink>
-                            <NavLink to="/sign-up">Sign up</NavLink>
+                            <NavLink to="/signin">Sign in</NavLink>
+                            <NavLink to="/signup">Sign up</NavLink>
                             <NavLink to="/" onClick={() => logout}>Logout</NavLink>
                         </NavItem>
                     </NavMenu>
