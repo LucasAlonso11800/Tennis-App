@@ -53,24 +53,22 @@ app.use(passport.session());
 
 // API KEYS
 
-const NEWS_API_KEY = process.env.NEWS_API_KEY
-const TENNIS_API_KEY = process.env.TENNIS_API_KEY
+const NEWS_API_KEY = process.env.NEWS_API_KEY;
+const TENNIS_API_KEY = process.env.TENNIS_API_KEY;
 
 // NEWS API
 app.post('/news', (req, res) => {
-    const query = req.body.query
-    const url = `https://newsapi.org/v2/everything?q=${query}&en&apiKey=${NEWS_API_KEY}`;
+    const query = req.body.query;
 
-    axios({
+    const options = {
         method: 'GET',
-        url: url,
-        responseType: 'application/json'
-    })
-        .then(data => {
-            res.json(data.data);
-        })
+        url: `https://newsapi.org/v2/everything?q=${query}&en&apiKey=${NEWS_API_KEY}`
+    };
+
+    axios.request(options)
+        .then(data => res.json(data.data))
         .catch(err => console.log(err))
-})
+});
 
 // TENNIS API
 app.post('/ranking', (req, res) => {
@@ -84,14 +82,13 @@ app.post('/ranking', (req, res) => {
             'x-rapidapi-host': 'tennis-live-data.p.rapidapi.com'
         }
     };
+
     axios.request(options)
-        .then(data => {
-            res.json(data.data);
-        })
+        .then(data => res.json(data.data))
         .catch(err => console.log(err))
 });
 
-app.post('/london-ranking', (req, res) => {
+app.post('/race-to-london', (req, res) => {
     const tour = req.body.tour;
 
     const options = {
@@ -102,14 +99,13 @@ app.post('/london-ranking', (req, res) => {
             'x-rapidapi-host': 'tennis-live-data.p.rapidapi.com'
         }
     };
+
     axios.request(options)
-        .then(data => {
-            res.json(data.data);
-        })
+        .then(data => res.json(data.data))
         .catch(err => console.log(err))
 });
 
-app.post('/season-calendar', (req, res) => {
+app.post('/season', (req, res) => {
     const tour = req.body.tour
     const options = {
         method: 'GET',
@@ -119,14 +115,13 @@ app.post('/season-calendar', (req, res) => {
             'x-rapidapi-host': 'tennis-live-data.p.rapidapi.com'
         }
     };
+
     axios.request(options)
-        .then(data => {
-            res.json(data.data);
-        })
+        .then(data => res.json(data.data))
         .catch(err => console.log(err))
 });
 
-app.post('/current-tournament', (req, res) => {
+app.post('/current-tournaments', (req, res) => {
     const date = new Date
     const options = {
         method: 'GET',
@@ -136,16 +131,18 @@ app.post('/current-tournament', (req, res) => {
             'x-rapidapi-host': 'tennis-live-data.p.rapidapi.com'
         }
     };
-    axios.request(options)
-        .then(data => {
-            res.json(data.data);
-        })
-        .catch(err => console.log(err))
 
+    axios.request(options)
+        .then(data => res.json(data.data))
+        .catch(err => console.log(err))
 });
+
+// ROUTES
 
 app.use('/users', userRoute);
 app.use('/news', newsRoute);
+
+//LISTEN
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
