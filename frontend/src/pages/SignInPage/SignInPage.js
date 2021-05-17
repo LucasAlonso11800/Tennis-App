@@ -22,6 +22,7 @@ function SignInPage() {
                 setEmail('');
                 setPassword('');
                 setAuthError('');
+                window.location = '/';
             })
             .catch(err => err ? setAuthError('Email or password incorrect') : '');
     };

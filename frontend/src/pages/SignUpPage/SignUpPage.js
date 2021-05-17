@@ -18,6 +18,7 @@ function SignUpPage() {
                 setAuthError('');
                 setEmail('');
                 setPassword('');
+                window.location = '/signin';
             })
             .catch(err => err ? setAuthError('Email already registered') : '')
     };
