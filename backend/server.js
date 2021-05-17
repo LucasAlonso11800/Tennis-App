@@ -12,16 +12,16 @@ require('./config/passport');
 const userRoute = require('./routes/users')
 const newsRoute = require('./routes/news');
 
-const app = express()
+const app = express();
 
 // DATABASE
 
-const MONGO_URI = process.env.MONGO_URI
+const MONGO_URI = process.env.MONGO_URI;
 
 mongoose.connect(MONGO_URI, {
-    useNewUrlParser: true,
+    useNewUrlParser: true, 
     useUnifiedTopology: true
-}, () => console.log('Connected to Mongo'))
+}, () => console.log('Connected to Mongo'));
 
 // SETTINGS
 
