@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Colors } from '../../globalStyles';
+import { Colors, Shadow } from '../../globalStyles';
 
 export const WarningCardContainer = styled.div`
 width: 40%;
@@ -10,6 +10,11 @@ background-color: ${Colors.beige};
 color: ${Colors.darkBlue};
 text-align: center;
 padding: 1em;
+box-shadow: ${Shadow};
+border-radius: 5px;
+@media all and (max-width: 500px){
+    width: 60%
+}
 `;
 export const WarningText = styled.p`
 margin: 1em 0;
