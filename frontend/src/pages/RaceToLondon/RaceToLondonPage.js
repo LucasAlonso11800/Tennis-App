@@ -4,7 +4,7 @@ import axios from 'axios';
 import { BackgroundContainer } from '../../globalStyles';
 import Background from '../../assets/backgrounds/Roland-garros.jpg';
 
-import { RankingTable, RankingForm } from '../../components/index';
+import { RankingTable, RankingForm, LoadingIcon } from '../../components/index';
 
 function RaceToLondonPage() {
     const [isLoading, setIsLoading] = useState(true);
@@ -15,12 +15,12 @@ function RaceToLondonPage() {
     const [tour, setTour] = useState('ATP');
 
     function getAndFilterPlayers(e) {
-        if(e) e.preventDefault();
         setIsLoading(true);
+        if (e) e.preventDefault();
         axios.post('https://tennis-world-app.herokuapp.com/race-to-london', { tour })
             .then(res => {
                 setIsLoading(false);
-                const data = res.data.results.rankings
+                const data = res.data.results.rankings;
                 setRankings(
                     data
                         .filter(player => {
@@ -40,7 +40,7 @@ function RaceToLondonPage() {
 
     return (
         <BackgroundContainer background={Background}>
-            <RankingTable rankings={rankings} />
+            {isLoading ? <LoadingIcon /> : <RankingTable rankings={rankings} />}
             <RankingForm
                 minRanking={minRanking}
                 setMinRanking={setMinRanking}

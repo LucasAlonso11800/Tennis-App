@@ -4,7 +4,7 @@ import axios from 'axios';
 import { BackgroundContainer } from '../../globalStyles';
 import Background from '../../assets/backgrounds/Australia.jpg';
 
-import { RankingForm, RankingTable } from '../../components/index';
+import { RankingForm, RankingTable, LoadingIcon } from '../../components/index';
 
 function RankingPage() {
     const [isLoading, setIsLoading] = useState(true);
@@ -15,8 +15,8 @@ function RankingPage() {
     const [tour, setTour] = useState('ATP');
 
     function getAndFilterPlayers(e) {
-        if(e) e.preventDefault();
         setIsLoading(true);
+        if (e) e.preventDefault();
         axios.post('https://tennis-world-app.herokuapp.com/ranking', { tour })
             .then(res => {
                 setIsLoading(false);
@@ -40,7 +40,7 @@ function RankingPage() {
 
     return (
         <BackgroundContainer background={Background}>
-            <RankingTable rankings={rankings} />
+            {isLoading ? <LoadingIcon /> : <RankingTable rankings={rankings} />}
             <RankingForm
                 minRanking={minRanking}
                 setMinRanking={setMinRanking}

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { BackgroundContainer } from '../../globalStyles';
 import Background from '../../assets/backgrounds/Clay.jpg';
 
-import { SearchTab, Articles } from '../../components/index';
+import { SearchTab, Articles, LoadingIcon } from '../../components/index';
 
 function NewsPage() {
     const [isLoading, setIsLoading] = useState(false);
@@ -12,12 +12,12 @@ function NewsPage() {
     const [query, setQuery] = useState('');
 
     function searchNews(e) {
-        e.preventDefault();
         setIsLoading(true)
+        e.preventDefault();
         axios.post('https://tennis-world-app.herokuapp.com/news', { query })
             .then(res => {
-                setIsLoading(false)
-                setNews(res.data.articles);
+                setIsLoading(false);
+                setNews(res.data.articles.slice(0, 10));
             })
             .catch(err => console.log(err))
     };
@@ -25,7 +25,7 @@ function NewsPage() {
     return (
         <BackgroundContainer background={Background}>
             <SearchTab query={query} setQuery={setQuery} searchNews={searchNews} />
-            <Articles news={news} isSaved={false}/>
+            {isLoading ? <LoadingIcon /> : <Articles news={news} isSaved={false} />}
         </BackgroundContainer>
     )
 };
