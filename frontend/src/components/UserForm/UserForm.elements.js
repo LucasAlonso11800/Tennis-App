@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { Colors, Shadow } from '../../globalStyles';
 
-export const UserFormContainer = styled.div`
+export const Container = styled.div`
 width: 40%;
 margin-top: 2em;
 margin-left: 2em;
@@ -48,5 +49,20 @@ padding: 0.5em 1em;
 font-weight: bold;
 background-color: ${Colors.darkBlue};
 border: none;
-color: #fff
+color: #fff;
 `;
+export const SuccessTitle = styled.p`
+margin-bottom: 1em;
+font-weight: bold;
+`;
+export const SuccessButtons = styled.div`
+display: flex;
+`;
+export const SuccessButton = styled.button`
+flex-grow: 1;
+padding: 0.5em 1em;
+background-color: ${Colors.darkBlue};
+`;
+export const SuccessLink = styled(Link)`
+color: #fff;
+`
