@@ -13,6 +13,7 @@ function SignInPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [authError, setAuthError] = useState('');
+    const [authSuccess, setAuthSuccess] = useState('');
 
     function enter(e) {
         e.preventDefault()
@@ -22,7 +23,7 @@ function SignInPage() {
                 setEmail('');
                 setPassword('');
                 setAuthError('');
-                window.location = '/';
+                setAuthSuccess("You've succesfully logged in!");
             })
             .catch(err => err ? setAuthError('Email or password incorrect') : '');
     };
@@ -34,6 +35,7 @@ function SignInPage() {
                 subtitle={'Enter and visit your favourite articles about Tennis'}
                 buttonText={'Sign in'}
                 authError={authError} 
+                authSuccess={authSuccess}
                 email={email}
                 setEmail={setEmail}
                 password={password}
