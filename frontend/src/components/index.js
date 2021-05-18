@@ -12,3 +12,4 @@ export { default as Articles } from './Articles/Articles';
 export { default as SearchTab } from './SearchTab/SearchTab';
 export { default as WarningCard } from './WarningCard/WarningCard';
 export { default as UserForm } from './UserForm/UserForm';
+export { default as LoadingIcon } from './LoadingIcon/LoadingIcon';

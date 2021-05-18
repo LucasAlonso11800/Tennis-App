@@ -12,8 +12,8 @@ import {
 import { FaArrowCircleUp, FaArrowCircleDown, FaEquals } from 'react-icons/fa';
 
 function RankingTable({ rankings }) {
-    const [windowWidth, setWindowWidth] = useState()
-    const [width, setWidth] = useState();
+    const [windowWidth, setWindowWidth] = useState(0)
+    const [width, setWidth] = useState(0);
 
     useEffect(() => {
         setWindowWidth(window.innerWidth);
@@ -48,11 +48,11 @@ function RankingTable({ rankings }) {
                     const { full_name, country, ranking_points, movement } = ranking
                     return (
                         <Player key={ranking.id}>
-                            <PlayerData content={'Ranking'} borderTop={true}>{ranking.ranking}</PlayerData>
-                            <PlayerData content={'Player'}>{full_name}</PlayerData>
-                            <PlayerData content={'Country'}>{country}</PlayerData>
-                            <PlayerData content={'Points'}>{ranking_points}</PlayerData>
-                            <PlayerData content={'Movement'} borderBottom={true}>
+                            <PlayerData content={0} borderTop={true}>{ranking.ranking}</PlayerData>
+                            <PlayerData content={1}>{full_name}</PlayerData>
+                            <PlayerData content={2}>{country}</PlayerData>
+                            <PlayerData content={3}>{ranking_points}</PlayerData>
+                            <PlayerData content={4} borderBottom={true}>
                                 {movement > 0 ? <FaArrowCircleUp /> :
                                     movement === '' ? <FaEquals /> :
                                         <FaArrowCircleDown />

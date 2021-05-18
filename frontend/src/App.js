@@ -6,7 +6,6 @@ import { Navbar } from './components/index';
 import { 
     LandingPage, 
     RankingPage, 
-    RaceToLondonPage, 
     CurrentTournamentsPage, 
     SeasonPage, 
     NewsPage,
@@ -14,6 +13,9 @@ import {
     SignInPage,
     SignUpPage
 } from './pages/index';
+
+import RankingBackground from './assets/backgrounds/Australia.jpg';
+import LondonBackground from './assets/backgrounds/Roland-garros.jpg';
 
 import { GlobalProvider } from './context/GlobalState';
 
@@ -23,8 +25,12 @@ function App() {
             <GlobalProvider>
                 <Navbar />
                 <Route path="/" exact component={LandingPage} />
-                <Route path="/ranking" component={RankingPage} />
-                <Route path="/race-to-london" component={RaceToLondonPage} />
+                <Route path="/ranking">
+                    <RankingPage endpoint={'ranking'} background={RankingBackground}/>
+                </Route>
+                <Route path="/race-to-london">
+                    <RankingPage endpoint={'race-to-london'} background={LondonBackground}/>
+                </Route>
                 <Route path="/current-tournaments" component={CurrentTournamentsPage} />
                 <Route path="/season" component={SeasonPage} />
                 <Route path="/news" component={NewsPage} />
