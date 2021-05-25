@@ -19,9 +19,9 @@ function PageTitle({ title, subtitle, valueATP, valueWTA, setTour }) {
             </TitleContainer>
             <SelectContainer>
                 <Label htmlFor='tour'>Select Tour</Label>
-                <Select name='tour'>
-                    <Option value={valueATP} onClick={e => setTour(e.target.value)}>ATP</Option>
-                    <Option value={valueWTA} onClick={e => setTour(e.target.value)}>WTA</Option>
+                <Select name='tour' onChange={e => setTour(e.target.value)}>
+                    <Option value={valueATP}>ATP</Option>
+                    <Option value={valueWTA}>WTA</Option>
                 </Select>
             </SelectContainer>
         </PageTitleContainer>

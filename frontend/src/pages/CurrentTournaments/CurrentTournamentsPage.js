@@ -8,12 +8,15 @@ import { PageTitle, Matches, LoadingIcon } from '../../components/index';
 function CurrentTournamentsPage() {
     const [currentTournament, setCurrentTournament] = useState([]);
     const [currentMatches, setCurrentMatches] = useState([]);
-    const [tour, setTour] = useState(1)
+    const [tour, setTour] = useState(1);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
+        setIsLoading(true)
         setCurrentMatches([]);
         axios.post('https://tennis-world-app.herokuapp.com/current-tournaments', { season: '2021' })
             .then(res => {
+                setIsLoading(false);
                 setCurrentMatches(res.data.results[tour].matches);
                 setCurrentTournament(res.data.results[tour].tournament);
             })
@@ -29,9 +32,9 @@ function CurrentTournamentsPage() {
                 valueATP={1}
                 valueWTA={0}
                 setTour={setTour} />
-            {currentMatches !== [] ?
-                <Matches matches={currentMatches} />
-                : <LoadingIcon />}
+            {isLoading ?
+                <LoadingIcon /> : 
+                <Matches matches={currentMatches} />}
         </BackgroundContainer>
     )
 };

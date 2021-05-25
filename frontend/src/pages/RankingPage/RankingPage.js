@@ -28,6 +28,9 @@ function RankingPage({ endpoint, background, rankingProperty }) {
                     .filter(player => {
                         if (country === '') return player
                         return player.country === country
+                    })
+                    .filter(player => {
+                        return player.full_name !== 'Kevin Krawietz'
                     }));
             })
             .catch(err => console.log(err))
