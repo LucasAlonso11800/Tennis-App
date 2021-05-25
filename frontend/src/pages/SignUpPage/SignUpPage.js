@@ -10,6 +10,7 @@ function SignUpPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [authError, setAuthError] = useState('');
+    const [authSuccess, setAuthSuccess] = useState('');
 
     function saveUser(e) {
         e.preventDefault()
@@ -29,6 +30,7 @@ function SignUpPage() {
                 subtitle={'Sign up and save articles about your favourite players and tournaments'}
                 buttonText={'Sign up'}
                 authError={authError} 
+                authSuccess={authSuccess}
                 email={email}
                 setEmail={setEmail}
                 password={password}

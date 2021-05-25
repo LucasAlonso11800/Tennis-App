@@ -5,7 +5,7 @@ import { BackgroundContainer } from '../../globalStyles';
 
 import { RankingForm, RankingTable, LoadingIcon } from '../../components/index';
 
-function RankingPage({ endpoint, background }) {
+function RankingPage({ endpoint, background, rankingProperty }) {
     const [isLoading, setIsLoading] = useState(true);
     const [rankings, setRankings] = useState([]);
     const [minRanking, setMinRanking] = useState(1);
@@ -19,16 +19,16 @@ function RankingPage({ endpoint, background }) {
         axios.post(`https://tennis-world-app.herokuapp.com/${endpoint}`, { tour })
             .then(res => {
                 setIsLoading(false);
-                const data = res.data.results.rankings
-                setRankings(
-                    data
-                        .filter(player => {
-                            return player.ranking >= minRanking && player.ranking <= maxRanking
-                        })
-                        .filter(player => {
-                            if (country === '') return player
-                            return player.country === country
-                        }));
+                const data = res.data.results.rankings;
+                
+                setRankings(data
+                    .filter(player => {
+                        return player[rankingProperty] >= minRanking && player[rankingProperty] <= maxRanking
+                    })
+                    .filter(player => {
+                        if (country === '') return player
+                        return player.country === country
+                    }));
             })
             .catch(err => console.log(err))
     };
@@ -39,7 +39,7 @@ function RankingPage({ endpoint, background }) {
 
     return (
         <BackgroundContainer background={background}>
-            {isLoading ? <LoadingIcon /> : <RankingTable rankings={rankings} />}
+            {isLoading ? <LoadingIcon /> : <RankingTable rankings={rankings} endpoint={endpoint}/>}
             <RankingForm
                 minRanking={minRanking}
                 setMinRanking={setMinRanking}
