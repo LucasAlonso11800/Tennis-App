@@ -7,3 +7,7 @@ export const MatchesContainer = styled.div`
     width: 100%;
     padding: 1em;
 `; 
+
+export const NoMatchesAlert = styled.h3`
+text-align: center;
+`
