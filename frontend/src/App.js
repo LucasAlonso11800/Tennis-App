@@ -26,10 +26,10 @@ function App() {
                 <Navbar />
                 <Route path="/" exact component={LandingPage} />
                 <Route path="/ranking">
-                    <RankingPage endpoint={'ranking'} background={RankingBackground}/>
+                    <RankingPage endpoint={'ranking'} background={RankingBackground} rankingProperty={'ranking'}/>
                 </Route>
                 <Route path="/race-to-london">
-                    <RankingPage endpoint={'race-to-london'} background={LondonBackground}/>
+                    <RankingPage endpoint={'race-to-london'} background={LondonBackground} rankingProperty={'race_ranking'}/>
                 </Route>
                 <Route path="/current-tournaments" component={CurrentTournamentsPage} />
                 <Route path="/season" component={SeasonPage} />
