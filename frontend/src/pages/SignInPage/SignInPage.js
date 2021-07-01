@@ -15,17 +15,19 @@ function SignInPage() {
     const [authError, setAuthError] = useState('');
     const [authSuccess, setAuthSuccess] = useState('');
 
-    function enter(e) {
+    async function enter(e) {
         e.preventDefault()
-        axios.post('https://tennis-world-app.herokuapp.com/users/in', { email, password })
-            .then(res => {
-                setUserId(res.data.userId);
-                setEmail('');
-                setPassword('');
-                setAuthError('');
-                setAuthSuccess("You've succesfully logged in!");
-            })
-            .catch(err => err ? setAuthError('Email or password incorrect') : '');
+        try {
+            const data = await (await axios.post('https://tennis-world-app.herokuapp.com/users/in', { email, password })).data.userId
+            setUserId(data);
+            setEmail('');
+            setPassword('');
+            setAuthError('');
+            setAuthSuccess("You've succesfully logged in!");
+        }
+        catch (err) {
+            setAuthError('Email or password incorrect')
+        }
     };
 
     return (
@@ -34,14 +36,14 @@ function SignInPage() {
                 title={'Sign In'}
                 subtitle={'Enter and visit your favourite articles about Tennis'}
                 buttonText={'Sign in'}
-                authError={authError} 
+                authError={authError}
                 authSuccess={authSuccess}
                 email={email}
                 setEmail={setEmail}
                 password={password}
                 setPassword={setPassword}
                 handleSubmit={enter}
-                />
+            />
         </BackgroundContainer>
     )
 };

@@ -12,13 +12,17 @@ function SeasonPage() {
     const [tour, setTour] = useState('ATP');
 
     useEffect(() => {
-        setIsLoading(true)
-        axios.post('https://tennis-world-app.herokuapp.com/season', { tour })
-            .then(res => {
-                setIsLoading(false);
-                setTournaments(res.data.results)
-            })
-            .catch(err => console.log(err));
+        setIsLoading(true);
+            (async () => {
+                try {
+                    const data = await (await axios.post('https://tennis-world-app.herokuapp.com/season', { tour })).data.results
+                    setIsLoading(false);
+                    setTournaments(data);
+                }
+                catch (err) {
+                    console.log(err)
+                }
+            })();
     }, [tour]);
 
     return (
