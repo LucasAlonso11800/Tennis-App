@@ -14,9 +14,15 @@ function UserPage() {
     const isLoggedIn = userId !== '';
 
     useEffect(() => {
-        axios.post('https://tennis-world-app.herokuapp.com/news/get-news', { id: userId })
-            .then(res => setNews(res.data))
-            .catch(err => console.log(err))
+        (async () => {
+            try {
+                const data = await (await axios.post('https://tennis-world-app.herokuapp.com/news/get-news', { id: userId })).data
+                setNews(data)
+            }
+            catch (err) {
+                console.log(err)
+            }
+        })()
     }, [userId])
 
     return (

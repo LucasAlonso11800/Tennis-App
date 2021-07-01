@@ -12,24 +12,27 @@ function SignUpPage() {
     const [authError, setAuthError] = useState('');
     const [authSuccess, setAuthSuccess] = useState('');
 
-    function saveUser(e) {
+    async function saveUser(e) {
         e.preventDefault()
-        axios.post('https://tennis-world-app.herokuapp.com/users/add', { email, password })
-            .then(() => {
-                setAuthError('');
-                setEmail('');
-                setPassword('');
-                window.location = '/signin';
-            })
-            .catch(err => err ? setAuthError('Email already registered') : '')
+        try {
+            await axios.post('https://tennis-world-app.herokuapp.com/users/add', { email, password })
+            setAuthError('');
+            setEmail('');
+            setPassword('');
+            window.location = '/signin';
+        }
+        catch (err) {
+            setAuthError('Email already registered')
+        }
     };
+    
     return (
         <BackgroundContainer background={Background}>
-            <UserForm 
+            <UserForm
                 title={'Create Account'}
                 subtitle={'Sign up and save articles about your favourite players and tournaments'}
                 buttonText={'Sign up'}
-                authError={authError} 
+                authError={authError}
                 authSuccess={authSuccess}
                 email={email}
                 setEmail={setEmail}

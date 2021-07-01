@@ -13,36 +13,28 @@ function RankingPage({ endpoint, background, rankingProperty }) {
     const [country, setCountry] = useState('');
     const [tour, setTour] = useState('ATP');
 
-    function getAndFilterPlayers(e) {
+    async function getAndFilterPlayers(e) {
         setIsLoading(true);
         if (e) e.preventDefault();
-        axios.post(`https://tennis-world-app.herokuapp.com/${endpoint}`, { tour })
-            .then(res => {
-                setIsLoading(false);
-                const data = res.data.results.rankings;
-                
-                setRankings(data
-                    .filter(player => {
-                        return player[rankingProperty] >= minRanking && player[rankingProperty] <= maxRanking
-                    })
-                    .filter(player => {
-                        if (country === '') return player
-                        return player.country === country
-                    })
-                    .filter(player => {
-                        return player.full_name !== 'Kevin Krawietz'
-                    }));
-            })
-            .catch(err => console.log(err))
+
+        try {
+            const data = await (await axios.post(`https://tennis-world-app.herokuapp.com/${endpoint}`, { tour })).data.results.rankings
+            setIsLoading(false);
+            setRankings(data
+                .filter(player => player[rankingProperty] >= minRanking && player[rankingProperty] <= maxRanking)
+                .filter(player => country === '' ? player : player.country === country)
+                .filter(player => player.full_name !== 'Kevin Krawietz'));
+        }
+        catch (err) {
+            console.log(err)
+        }
     };
 
-    useEffect(() => {
-        getAndFilterPlayers()
-    }, []);
+    useEffect(() => getAndFilterPlayers(), []);
 
     return (
         <BackgroundContainer background={background}>
-            {isLoading ? <LoadingIcon /> : <RankingTable rankings={rankings} endpoint={endpoint}/>}
+            {isLoading ? <LoadingIcon /> : <RankingTable rankings={rankings} endpoint={endpoint} />}
             <RankingForm
                 minRanking={minRanking}
                 setMinRanking={setMinRanking}

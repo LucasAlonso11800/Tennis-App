@@ -11,15 +11,17 @@ function NewsPage() {
     const [news, setNews] = useState([]);
     const [query, setQuery] = useState('');
 
-    function searchNews(e) {
+    async function searchNews(e) {
         setIsLoading(true)
         e.preventDefault();
-        axios.post('https://tennis-world-app.herokuapp.com/news', { query })
-            .then(res => {
-                setIsLoading(false);
-                setNews(res.data.articles.slice(0, 10));
-            })
-            .catch(err => console.log(err))
+        try {
+            const data = await (await axios.post('https://tennis-world-app.herokuapp.com/news', { query })).data.articles
+            setIsLoading(false);
+            setNews(data.slice(0, 10));
+        }
+        catch (err) {
+            console.log(err)
+        }
     };
 
     return (

@@ -14,15 +14,20 @@ function CurrentTournamentsPage() {
     useEffect(() => {
         setIsLoading(true)
         setCurrentMatches([]);
-        axios.post('https://tennis-world-app.herokuapp.com/current-tournaments', { season: '2021' })
-            .then(res => {
-                setIsLoading(false);
-                setCurrentMatches(res.data.results[tour].matches);
-                setCurrentTournament(res.data.results[tour].tournament);
-            })
-            .catch(err => console.log(err));
-    }, [tour])
 
+        (async () => {
+            try {
+                const data = await (await axios.post('https://tennis-world-app.herokuapp.com/current-tournaments', { season: '2021' })).data.results[tour]
+
+                setIsLoading(false);
+                setCurrentMatches(data.matches);
+                setCurrentTournament(data.tournament);
+            }
+            catch (err) {
+                console.log(err)
+            }
+        })();
+    }, [tour]);
 
     return (
         <BackgroundContainer background={Background}>
@@ -33,7 +38,7 @@ function CurrentTournamentsPage() {
                 valueWTA={0}
                 setTour={setTour} />
             {isLoading ?
-                <LoadingIcon /> : 
+                <LoadingIcon /> :
                 <Matches matches={currentMatches} />}
         </BackgroundContainer>
     )
