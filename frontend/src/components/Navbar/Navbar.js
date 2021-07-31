@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-import axios from 'axios';
 import { GlobalContext } from '../../context/GlobalState';
 import { FaTimes, FaBars } from 'react-icons/fa';
 import {
@@ -18,7 +17,7 @@ import ATPLogo from '../../assets/logos/ATP.png';
 import WTALogo from '../../assets/logos/WTA.svg';
 
 function Navbar() {
-    const [userId, setUserId] = useContext(GlobalContext);
+    const { userData, dispatch } = useContext(GlobalContext);
 
     const [display, setDisplay] = useState({});
     const [displayLateralNavbar, setDisplayLateralNavbar] = useState(false)
@@ -36,16 +35,6 @@ function Navbar() {
             default: return
         }
     };
-
-    function logout() {
-        axios.post('https://tennis-world-app.herokuapp.com/users/out', {
-            out: 'Log me out'
-        })
-            .then(res => {
-                if (res.data === 'Logged out') setUserId('')
-            })
-            .catch(err => console.log(err));
-    }
 
     return (
         <Header>
@@ -80,9 +69,12 @@ function Navbar() {
                     <NavMenu>
                         <NavMenuTitle onClick={() => handleClick('account')}>Your Account</NavMenuTitle>
                         <NavItem isDisplayed={display.account}>
-                            <NavLink to="/signin">Sign in</NavLink>
-                            <NavLink to="/signup">Sign up</NavLink>
-                            <NavLink to="/" onClick={() => logout}>Logout</NavLink>
+                            {userData ? <NavLink to="/" onClick={() => dispatch({ type: 'LOGOUT' })}>Logout</NavLink> :
+                                <>
+                                    <NavLink to="/signin">Sign in</NavLink>
+                                    <NavLink to="/signup">Sign up</NavLink>
+                                </>
+                            }
                         </NavItem>
                     </NavMenu>
                 </NavMenuContainer>

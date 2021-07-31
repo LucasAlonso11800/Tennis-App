@@ -1,29 +1,39 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { GlobalContext } from '../../context/GlobalState';
-
+import { API_URL } from '../../url';
 import { BackgroundContainer } from '../../globalStyles';
 import Background from '../../assets/backgrounds/Finals.jpg';
 
 import { UserForm } from '../../components/index';
 
 function SignInPage() {
-    const [userId, setUserId] = useContext(GlobalContext);
+    const { userData, dispatch } = useContext(GlobalContext);
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [authError, setAuthError] = useState('');
-    const [authSuccess, setAuthSuccess] = useState('');
+    const [loading, setLoading] = useState(false);
+
+    if(userData !== null) window.location = "/";
 
     async function enter(e) {
         e.preventDefault()
+        setLoading(true);
         try {
-            const data = await (await axios.post('https://tennis-world-app.herokuapp.com/users/in', { email, password })).data.userId
-            setUserId(data);
+            const data = await (await axios.post(`${API_URL}/users/in`, { email, password })).data;
+            dispatch({
+                type: 'LOGIN',
+                payload: { 
+                    userId: data.userId,
+                    token: data.token,
+                }
+            });
             setEmail('');
             setPassword('');
             setAuthError('');
-            setAuthSuccess("You've succesfully logged in!");
+            setLoading(false)
+            window.location = "/";
         }
         catch (err) {
             setAuthError('Email or password incorrect')
@@ -36,8 +46,8 @@ function SignInPage() {
                 title={'Sign In'}
                 subtitle={'Enter and visit your favourite articles about Tennis'}
                 buttonText={'Sign in'}
+                loading={loading}
                 authError={authError}
-                authSuccess={authSuccess}
                 email={email}
                 setEmail={setEmail}
                 password={password}

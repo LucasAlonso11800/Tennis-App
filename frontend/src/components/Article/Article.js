@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { GlobalContext } from '../../context/GlobalState';
+import { API_URL } from '../../url';
 import {
     ArticleContainer,
     ArticleTitle,
@@ -11,23 +12,26 @@ import {
     ArticleLink
 } from './Article.elements';
 
-function Article({ article, isSaved }) {
+function Article({ article, isSaved, setNews }) {
     const { url, title, urlToImage, description } = article;
-
-    const [userId, setUserId] = useContext(GlobalContext);
+    const { userData } = useContext(GlobalContext);
     const [saved, setSaved] = useState(isSaved);
-    const [loggedIn, setLoggedIn] = useState(true);
 
-    function saveArticle() {
+    async function saveArticle() {
         if (saved) {
-            axios.post('https://tennis-world-app.herokuapp.com/news/delete', { url, userId })
-                .then(() => setSaved(!saved))
-                .catch(err => console.log(err))
+            try {
+                await axios.post(`${API_URL}/news/delete`, { url, userId: userData.userId, token: userData.token });
+                setSaved(!saved);
+                if(setNews) setNews(news => news.filter(n => n.url !== url));
+            }
+            catch (err) { console.log(err) }
         }
         else {
-            axios.post('https://tennis-world-app.herokuapp.com/news/add', { title, urlToImage, description, url, userId })
-                .then(() => setSaved(!saved))   
-                .catch(err => err ? setLoggedIn(!loggedIn) : '')
+            try {
+                await axios.post(`${API_URL}/news/add`, { title, urlToImage, description, url, userId: userData.userId, token: userData.token });
+                setSaved(!saved);
+            }
+            catch (err) { console.log(err) }
         }
     };
 
@@ -40,8 +44,8 @@ function Article({ article, isSaved }) {
                 <ArticleButton type="button">
                     <ArticleLink target='_BLANK' href={url}>Read More</ArticleLink>
                 </ArticleButton>
-                <ArticleButton type="button" onClick={saveArticle} br={true}>
-                    {!loggedIn ? 'Be sure to log in to save articles' :
+                <ArticleButton type="button" onClick={() => saveArticle()} br={true}>
+                    {!userData ? 'Be sure to log in to save articles' :
                         saved ? 'Article saved' : 'Save Article'}
                 </ArticleButton>
             </ArticleButtons>

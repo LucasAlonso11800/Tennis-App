@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import { API_URL } from '../../url';
 import { BackgroundContainer } from '../../globalStyles';
 import Background from '../../assets/backgrounds/Clay.jpg';
 
@@ -9,13 +9,13 @@ import { SearchTab, Articles, LoadingIcon } from '../../components/index';
 function NewsPage() {
     const [isLoading, setIsLoading] = useState(false);
     const [news, setNews] = useState([]);
-    const [query, setQuery] = useState('');
+    const [query, setQuery] = useState('Tennis');
 
     async function searchNews(e) {
         setIsLoading(true)
         e.preventDefault();
         try {
-            const data = await (await axios.post('https://tennis-world-app.herokuapp.com/news', { query })).data.articles
+            const data = await (await axios.post(`${API_URL}/news`, { query })).data.articles
             setIsLoading(false);
             setNews(data.slice(0, 10));
         }

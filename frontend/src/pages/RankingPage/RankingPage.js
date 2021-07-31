@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import { API_URL } from '../../url';
 import { BackgroundContainer } from '../../globalStyles';
 
 import { RankingForm, RankingTable, LoadingIcon } from '../../components/index';
@@ -18,7 +18,7 @@ function RankingPage({ endpoint, background, rankingProperty }) {
         if (e) e.preventDefault();
 
         try {
-            const data = await (await axios.post(`https://tennis-world-app.herokuapp.com/${endpoint}`, { tour })).data.results.rankings
+            const data = await (await axios.post(`${API_URL}/${endpoint}`, { tour })).data.results.rankings
             setIsLoading(false);
             setRankings(data
                 .filter(player => player[rankingProperty] >= minRanking && player[rankingProperty] <= maxRanking)

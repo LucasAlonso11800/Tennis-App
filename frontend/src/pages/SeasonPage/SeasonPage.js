@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import { API_URL } from '../../url';
 import { BackgroundContainer } from '../../globalStyles';
 import Background from '../../assets/backgrounds/Us-Open.jpg';
 
@@ -15,7 +15,7 @@ function SeasonPage() {
         setIsLoading(true);
             (async () => {
                 try {
-                    const data = await (await axios.post('https://tennis-world-app.herokuapp.com/season', { tour })).data.results
+                    const data = await (await axios.post(`${API_URL}/season`, { tour })).data.results
                     setIsLoading(false);
                     setTournaments(data);
                 }
