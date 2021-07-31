@@ -1,33 +1,33 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { GlobalContext } from '../../context/GlobalState';
-
+import { API_URL } from '../../url';
 import { BackgroundContainer } from '../../globalStyles';
 import Background from '../../assets/backgrounds/Balls.jpg';
 
 import { Articles, WarningCard } from '../../components/index';
 
 function UserPage() {
-    const [userId, setUserdId] = useContext(GlobalContext);
+    const { userData } = useContext(GlobalContext);
     const [news, setNews] = useState([]);
 
-    const isLoggedIn = userId !== '';
-
     useEffect(() => {
-        (async () => {
-            try {
-                const data = await (await axios.post('https://tennis-world-app.herokuapp.com/news/get-news', { id: userId })).data
-                setNews(data)
-            }
-            catch (err) {
-                console.log(err)
-            }
-        })()
-    }, [userId])
+        if(userData){
+            (async () => {
+                try {
+                    const data = await (await axios.post(`${API_URL}/news/get-news`, { id: userData.userId })).data
+                    setNews(data)
+                }
+                catch (err) {
+                    console.log(err)
+                }
+            })()
+        }
+    }, [userData])
 
     return (
         <BackgroundContainer background={Background}>
-            {isLoggedIn ? <Articles news={news} isSaved={true} /> : <WarningCard />}
+            {userData ? <Articles news={news} isSaved={true} /> : <WarningCard />}
         </BackgroundContainer>
     )
 };

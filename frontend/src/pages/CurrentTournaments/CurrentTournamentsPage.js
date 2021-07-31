@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { API_URL } from '../../url';
 import { BackgroundContainer } from '../../globalStyles';
 import Background from '../../assets/backgrounds/Wimbledon.jpeg'
 
@@ -13,11 +14,9 @@ function CurrentTournamentsPage() {
 
     useEffect(() => {
         setIsLoading(true)
-        setCurrentMatches([]);
-
         (async () => {
             try {
-                const data = await (await axios.post('https://tennis-world-app.herokuapp.com/current-tournaments', { season: '2021' })).data.results[tour]
+                const data = await (await axios.post(`${API_URL}/current-tournaments`, { season: '2021' })).data.results[tour]
 
                 setIsLoading(false);
                 setCurrentMatches(data.matches);

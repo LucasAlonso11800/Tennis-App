@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
-
+import { GlobalContext } from '../../context/GlobalState';
+import { API_URL } from '../../url';
 import { BackgroundContainer } from '../../globalStyles';
 import Background from '../../assets/backgrounds/Hard.jpg';
-
 import { UserForm } from '../../components/index';
 
 function SignUpPage() {
+    const { dispatch } = useContext(GlobalContext);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [authError, setAuthError] = useState('');
@@ -15,11 +16,18 @@ function SignUpPage() {
     async function saveUser(e) {
         e.preventDefault()
         try {
-            await axios.post('https://tennis-world-app.herokuapp.com/users/add', { email, password })
+            const data = await axios.post(`${API_URL}/users/add`, { email, password })
+            dispatch({
+                type: 'LOGIN',
+                payload: { 
+                    userId: data.userId,
+                    token: data.token,
+                }
+            });
             setAuthError('');
             setEmail('');
             setPassword('');
-            window.location = '/signin';
+            window.location = '/';
         }
         catch (err) {
             setAuthError('Email already registered')
