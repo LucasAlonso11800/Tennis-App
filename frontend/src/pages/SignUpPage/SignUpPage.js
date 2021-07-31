@@ -7,16 +7,20 @@ import Background from '../../assets/backgrounds/Hard.jpg';
 import { UserForm } from '../../components/index';
 
 function SignUpPage() {
-    const { dispatch } = useContext(GlobalContext);
+    const { userData, dispatch } = useContext(GlobalContext);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [authError, setAuthError] = useState('');
-    const [authSuccess, setAuthSuccess] = useState('');
+    const [loading, setLoading] = useState(false);
+
+    if(userData !== null) window.location = "/";
 
     async function saveUser(e) {
-        e.preventDefault()
+        e.preventDefault();
+        setLoading(true);
         try {
-            const data = await axios.post(`${API_URL}/users/add`, { email, password })
+            const data = await (await axios.post(`${API_URL}/users/add`, { email, password })).data
+
             dispatch({
                 type: 'LOGIN',
                 payload: { 
@@ -27,9 +31,11 @@ function SignUpPage() {
             setAuthError('');
             setEmail('');
             setPassword('');
+            setLoading(false);
             window.location = '/';
         }
         catch (err) {
+            setLoading(false);
             setAuthError('Email already registered')
         }
     };
@@ -40,8 +46,8 @@ function SignUpPage() {
                 title={'Create Account'}
                 subtitle={'Sign up and save articles about your favourite players and tournaments'}
                 buttonText={'Sign up'}
+                loading={loading}
                 authError={authError}
-                authSuccess={authSuccess}
                 email={email}
                 setEmail={setEmail}
                 password={password}

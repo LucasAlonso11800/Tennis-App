@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-import axios from 'axios';
 import { GlobalContext } from '../../context/GlobalState';
 import { FaTimes, FaBars } from 'react-icons/fa';
 import {
@@ -18,7 +17,7 @@ import ATPLogo from '../../assets/logos/ATP.png';
 import WTALogo from '../../assets/logos/WTA.svg';
 
 function Navbar() {
-    const { dispatch } = useContext(GlobalContext);
+    const { userData, dispatch } = useContext(GlobalContext);
 
     const [display, setDisplay] = useState({});
     const [displayLateralNavbar, setDisplayLateralNavbar] = useState(false)
@@ -70,9 +69,12 @@ function Navbar() {
                     <NavMenu>
                         <NavMenuTitle onClick={() => handleClick('account')}>Your Account</NavMenuTitle>
                         <NavItem isDisplayed={display.account}>
-                            <NavLink to="/signin">Sign in</NavLink>
-                            <NavLink to="/signup">Sign up</NavLink>
-                            <NavLink to="/" onClick={() => dispatch({ type: 'LOGOUT' })}>Logout</NavLink>
+                            {userData ? <NavLink to="/" onClick={() => dispatch({ type: 'LOGOUT' })}>Logout</NavLink> :
+                                <>
+                                    <NavLink to="/signin">Sign in</NavLink>
+                                    <NavLink to="/signup">Sign up</NavLink>
+                                </>
+                            }
                         </NavItem>
                     </NavMenu>
                 </NavMenuContainer>

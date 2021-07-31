@@ -12,23 +12,23 @@ import {
     ArticleLink
 } from './Article.elements';
 
-function Article({ article, isSaved }) {
+function Article({ article, isSaved, setNews }) {
     const { url, title, urlToImage, description } = article;
-
     const { userData } = useContext(GlobalContext);
     const [saved, setSaved] = useState(isSaved);
 
     async function saveArticle() {
         if (saved) {
             try {
-                await axios.post(`${API_URL}/news/delete`, { url, userId: userData.userId, token: userData.token })
+                await axios.post(`${API_URL}/news/delete`, { url, userId: userData.userId, token: userData.token });
                 setSaved(!saved);
+                if(setNews) setNews(news => news.filter(n => n.url !== url));
             }
             catch (err) { console.log(err) }
         }
         else {
             try {
-                await axios.post(`${API_URL}/news/add`, { title, urlToImage, description, url, userId: userData.userId, token: userData.token })
+                await axios.post(`${API_URL}/news/add`, { title, urlToImage, description, url, userId: userData.userId, token: userData.token });
                 setSaved(!saved);
             }
             catch (err) { console.log(err) }

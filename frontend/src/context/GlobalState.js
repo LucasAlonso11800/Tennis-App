@@ -4,6 +4,7 @@ import jwtDecode from 'jwt-decode';
 let initialState = null;
 
 if (localStorage.getItem("token")) {
+    console.log('Here')
     const decodedToken = jwtDecode(localStorage.getItem("token"));
 
     if (decodedToken.exp * 1000 < Date.now()) {
@@ -34,7 +35,7 @@ function reducer(state, action) {
 
 export const GlobalProvider = ({ children }) => {
     const [userData, dispatch] = useReducer(reducer, initialState);
-    
+
     return <GlobalContext.Provider value={{ userData, dispatch }}>
         {children}
     </GlobalContext.Provider>

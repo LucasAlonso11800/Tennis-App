@@ -33,7 +33,9 @@ router.post('/in', async (req, res) => {
 router.post('/add', async (req, res) => {
     try {
         const email = await User.findOne({ email: req.body.email });
-        if (email) throw new Error('Email already registered');
+        if (email){
+            res.json('Email already registered');
+        } 
 
         const newUser = new User({
             email: req.body.email,

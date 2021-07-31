@@ -8,15 +8,18 @@ import Background from '../../assets/backgrounds/Finals.jpg';
 import { UserForm } from '../../components/index';
 
 function SignInPage() {
-    const { dispatch } = useContext(GlobalContext);
+    const { userData, dispatch } = useContext(GlobalContext);
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [authError, setAuthError] = useState('');
-    const [authSuccess, setAuthSuccess] = useState('');
+    const [loading, setLoading] = useState(false);
+
+    if(userData !== null) window.location = "/";
 
     async function enter(e) {
         e.preventDefault()
+        setLoading(true);
         try {
             const data = await (await axios.post(`${API_URL}/users/in`, { email, password })).data;
             dispatch({
@@ -29,11 +32,10 @@ function SignInPage() {
             setEmail('');
             setPassword('');
             setAuthError('');
-            setAuthSuccess("You've succesfully logged in!");
+            setLoading(false)
             window.location = "/";
         }
         catch (err) {
-            console.log(err)
             setAuthError('Email or password incorrect')
         }
     };
@@ -44,8 +46,8 @@ function SignInPage() {
                 title={'Sign In'}
                 subtitle={'Enter and visit your favourite articles about Tennis'}
                 buttonText={'Sign in'}
+                loading={loading}
                 authError={authError}
-                authSuccess={authSuccess}
                 email={email}
                 setEmail={setEmail}
                 password={password}

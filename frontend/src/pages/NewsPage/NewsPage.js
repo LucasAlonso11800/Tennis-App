@@ -9,7 +9,7 @@ import { SearchTab, Articles, LoadingIcon } from '../../components/index';
 function NewsPage() {
     const [isLoading, setIsLoading] = useState(false);
     const [news, setNews] = useState([]);
-    const [query, setQuery] = useState('');
+    const [query, setQuery] = useState('Tennis');
 
     async function searchNews(e) {
         setIsLoading(true)
